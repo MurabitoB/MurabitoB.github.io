@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ""
-description: ""
+title: MurabitoB'Blog
+subtitle: "這不是Bug，是Feature"
+description: "後端軟體工程師<br>業餘Unity工程師<br>獨立遊戲開發"
 keywords:
-author: John Doe
-language: en
+author: MurabitoB
+language: zh-TW
 timezone: ""
 
 # URL
