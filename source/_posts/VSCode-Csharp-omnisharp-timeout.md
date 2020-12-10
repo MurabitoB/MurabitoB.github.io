@@ -12,7 +12,7 @@ tag:
 
 ### 問題
 
-最近在用公司電腦測VSCode開 .Net Core MVC專案，還有Unity的專案都跑下面的Log
+最近在用公司電腦測VSCode開 .Net Core MVC專案，還有Unity的專案都跑下面的Log，並且無法顯示intellisense
 
 ```Powershell
 [ERROR] Error: OmniSharp server load timed out. Use the 'omnisharp.projectLoadTimeout' setting to override the default delay (one minute).
