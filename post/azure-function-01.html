@@ -8,7 +8,8 @@
     
     <title>Azure Function .Net Core 開發紀錄（一） | MurabitoB&#39;Blog</title>
 
-    <meta name="description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發">
+    <meta name="description" content="&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 Visual Studio 建立新的 Azure Function 的專案的時候，預設是不會有 Dependency Inejction 的相關設定，但是可以透過安裝 nuget 套件來進行設定。&lt;/p&gt;
+&lt;h2 id=&#34;安裝套件&#34;&gt;&lt;a href=&#34;#安裝套件&#34; class=&#34;headerlink&#34; title=&#34;安裝套件&#34;&gt;&lt;/a&gt;安裝套件&lt;/h2&gt;&lt;h3 id=&#34;安裝-Microosft-Azure-Functions-Extensions-套件&#34;&gt;&lt;a href=&#34;#安裝-Microosft-Azure-Functions-Extensions-套件&#34; class=&#34;headerlink&#34; title=&#34;安裝 Microosft.Azure.Functions.Extensions 套件&#34;&gt;&lt;/a&gt;安裝 Microosft.Azure.Functions.Extensions 套件&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/DY8Tf5u.png&#34;&gt;&lt;/p&gt;">
     <meta name="keywords" content="">
 
     
@@ -16,17 +17,21 @@
     <meta property="og:locale" content="zh-TW" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content= "Azure Function .Net Core 開發紀錄（一） | MurabitoB&#39;Blog"  />
-    <meta property="og:description" content= "後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發" />
+    <meta property="og:description" content= "&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 Visual Studio 建立新的 Azure Function 的專案的時候，預設是不會有 Dependency Inejction 的相關設定，但是可以透過安裝 nuget 套件來進行設定。&lt;/p&gt;
+&lt;h2 id=&#34;安裝套件&#34;&gt;&lt;a href=&#34;#安裝套件&#34; class=&#34;headerlink&#34; title=&#34;安裝套件&#34;&gt;&lt;/a&gt;安裝套件&lt;/h2&gt;&lt;h3 id=&#34;安裝-Microosft-Azure-Functions-Extensions-套件&#34;&gt;&lt;a href=&#34;#安裝-Microosft-Azure-Functions-Extensions-套件&#34; class=&#34;headerlink&#34; title=&#34;安裝 Microosft.Azure.Functions.Extensions 套件&#34;&gt;&lt;/a&gt;安裝 Microosft.Azure.Functions.Extensions 套件&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/DY8Tf5u.png&#34;&gt;&lt;/p&gt;" />
     <meta property="og:url" content="http://murabitob.github.io/post/azure-function-01.html" />
     <meta property="og:site_name" content="" />
     <meta property="article:author" content="MurabitoB" />
     <meta property="article:publisher" content="" />
-    <meta property="og:description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發" />
+    <meta property="og:description" content="&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 Visual Studio 建立新的 Azure Function 的專案的時候，預設是不會有 Dependency Inejction 的相關設定，但是可以透過安裝 nuget 套件來進行設定。&lt;/p&gt;
+&lt;h2 id=&#34;安裝套件&#34;&gt;&lt;a href=&#34;#安裝套件&#34; class=&#34;headerlink&#34; title=&#34;安裝套件&#34;&gt;&lt;/a&gt;安裝套件&lt;/h2&gt;&lt;h3 id=&#34;安裝-Microosft-Azure-Functions-Extensions-套件&#34;&gt;&lt;a href=&#34;#安裝-Microosft-Azure-Functions-Extensions-套件&#34; class=&#34;headerlink&#34; title=&#34;安裝 Microosft.Azure.Functions.Extensions 套件&#34;&gt;&lt;/a&gt;安裝 Microosft.Azure.Functions.Extensions 套件&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/DY8Tf5u.png&#34;&gt;&lt;/p&gt;" />
     <meta name="twitter:title" content="Azure Function .Net Core 開發紀錄（一） | MurabitoB&#39;Blog"/>
-    <meta name="twitter:description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發"/>
+    <meta name="twitter:description" content="&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 Visual Studio 建立新的 Azure Function 的專案的時候，預設是不會有 Dependency Inejction 的相關設定，但是可以透過安裝 nuget 套件來進行設定。&lt;/p&gt;
+&lt;h2 id=&#34;安裝套件&#34;&gt;&lt;a href=&#34;#安裝套件&#34; class=&#34;headerlink&#34; title=&#34;安裝套件&#34;&gt;&lt;/a&gt;安裝套件&lt;/h2&gt;&lt;h3 id=&#34;安裝-Microosft-Azure-Functions-Extensions-套件&#34;&gt;&lt;a href=&#34;#安裝-Microosft-Azure-Functions-Extensions-套件&#34; class=&#34;headerlink&#34; title=&#34;安裝 Microosft.Azure.Functions.Extensions 套件&#34;&gt;&lt;/a&gt;安裝 Microosft.Azure.Functions.Extensions 套件&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/DY8Tf5u.png&#34;&gt;&lt;/p&gt;"/>
     <script type="application/ld+json">
         {
-            "description": "後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發",
+            "description": "&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 Visual Studio 建立新的 Azure Function 的專案的時候，預設是不會有 Dependency Inejction 的相關設定，但是可以透過安裝 nuget 套件來進行設定。&lt;/p&gt;
+&lt;h2 id=&#34;安裝套件&#34;&gt;&lt;a href=&#34;#安裝套件&#34; class=&#34;headerlink&#34; title=&#34;安裝套件&#34;&gt;&lt;/a&gt;安裝套件&lt;/h2&gt;&lt;h3 id=&#34;安裝-Microosft-Azure-Functions-Extensions-套件&#34;&gt;&lt;a href=&#34;#安裝-Microosft-Azure-Functions-Extensions-套件&#34; class=&#34;headerlink&#34; title=&#34;安裝 Microosft.Azure.Functions.Extensions 套件&#34;&gt;&lt;/a&gt;安裝 Microosft.Azure.Functions.Extensions 套件&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/DY8Tf5u.png&#34;&gt;&lt;/p&gt;",
             "author": { "@type": "Person", "name": "MurabitoB" },
             "@type": "BlogPosting",
             "url": "http://murabitob.github.io/post/azure-function-01.html",
@@ -217,6 +222,8 @@
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
             <h1 id="Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection"><a href="#Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection" class="headerlink" title="Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection"></a>Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 Visual Studio 建立新的 Azure Function 的專案的時候，預設是不會有 Dependency Inejction 的相關設定，但是可以透過安裝 nuget 套件來進行設定。</p>
 <h2 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h2><h3 id="安裝-Microosft-Azure-Functions-Extensions-套件"><a href="#安裝-Microosft-Azure-Functions-Extensions-套件" class="headerlink" title="安裝 Microosft.Azure.Functions.Extensions 套件"></a>安裝 Microosft.Azure.Functions.Extensions 套件</h3><p><img src="https://i.imgur.com/DY8Tf5u.png"></p>
+<span id="more"></span>
+
 <h2 id="設定-Startup"><a href="#設定-Startup" class="headerlink" title="設定 Startup"></a>設定 Startup</h2><p>與 .net core API 專案的 Template 不同， Azure Function 的專案預設是不會建立 Startup ，所以需要自行建立入口的 class。</p>
 <pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp"><span class="token comment">// Startup.cs</span>
 <span class="token keyword">using</span> <span class="token namespace">Microsoft<span class="token punctuation">.</span>Azure<span class="token punctuation">.</span>Functions<span class="token punctuation">.</span>Extensions<span class="token punctuation">.</span>DependencyInjection</span><span class="token punctuation">;</span>
@@ -256,7 +263,7 @@
 <nav class="article-nav">
   
     <a href="/post/azure-function-02.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">次の記事</div>
+      <div class="article-nav-caption">prossimo</div>
       <div class="article-nav-title">
         
           Azure Function .Net Core 開發紀錄（二）
@@ -266,7 +273,7 @@
   
   
     <a href="/post/dotnet-core-scoped-in-singleton.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">前の記事</div>
+      <div class="article-nav-caption">precedente</div>
       <div class="article-nav-title">.Net Core Dependency Injection Scoped 注入到 Singleton</div>
     </a>
   
@@ -274,7 +281,7 @@
 
 
     <section class="share">
-        <div class="share-title">シェア</div>
+        <div class="share-title">share</div>
         <a class="share-item" target="_blank"
             href="https://twitter.com/share?text=Azure Function .Net Core 開發紀錄（一） - MurabitoB'Blog&url=http%3A%2F%2Fmurabitob.github.io%2Fpost%2Fazure-function-01.html">
             <ion-icon name="logo-twitter"></ion-icon>

@@ -8,7 +8,15 @@
     
     <title>Azure Function .Net Core 開發紀錄（二） | MurabitoB&#39;Blog</title>
 
-    <meta name="description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發">
+    <meta name="description" content="&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 .Net Core API 專案中，我們習慣透過 appsetting.json 來取得 config 的設定值，在 Azure function 中，需要透過專案根目錄裡面的 local.setting.json 的 Values 欄位來設定。&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-json&#34; data-language=&#34;json&#34;&gt;&lt;code class=&#34;language-json&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
+  &lt;span class=&#34;token property&#34;&gt;&#34;IsEncrypted&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token boolean&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;token property&#34;&gt;&#34;Values&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
+    &lt;span class=&#34;token property&#34;&gt;&#34;AzureWebJobsStorage&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;UseDevelopmentStorage=true&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;token property&#34;&gt;&#34;FUNCTIONS_WORKER_RUNTIME&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;dotnet&#34;&lt;/span&gt;
+    &lt;span class=&#34;token comment&#34;&gt;// 從下面開始添加自己的設定&lt;/span&gt;
+  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;
+&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;">
     <meta name="keywords" content="">
 
     
@@ -16,17 +24,49 @@
     <meta property="og:locale" content="zh-TW" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content= "Azure Function .Net Core 開發紀錄（二） | MurabitoB&#39;Blog"  />
-    <meta property="og:description" content= "後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發" />
+    <meta property="og:description" content= "&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 .Net Core API 專案中，我們習慣透過 appsetting.json 來取得 config 的設定值，在 Azure function 中，需要透過專案根目錄裡面的 local.setting.json 的 Values 欄位來設定。&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-json&#34; data-language=&#34;json&#34;&gt;&lt;code class=&#34;language-json&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
+  &lt;span class=&#34;token property&#34;&gt;&#34;IsEncrypted&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token boolean&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;token property&#34;&gt;&#34;Values&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
+    &lt;span class=&#34;token property&#34;&gt;&#34;AzureWebJobsStorage&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;UseDevelopmentStorage=true&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;token property&#34;&gt;&#34;FUNCTIONS_WORKER_RUNTIME&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;dotnet&#34;&lt;/span&gt;
+    &lt;span class=&#34;token comment&#34;&gt;// 從下面開始添加自己的設定&lt;/span&gt;
+  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;
+&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;" />
     <meta property="og:url" content="http://murabitob.github.io/post/azure-function-02.html" />
     <meta property="og:site_name" content="" />
     <meta property="article:author" content="MurabitoB" />
     <meta property="article:publisher" content="" />
-    <meta property="og:description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發" />
+    <meta property="og:description" content="&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 .Net Core API 專案中，我們習慣透過 appsetting.json 來取得 config 的設定值，在 Azure function 中，需要透過專案根目錄裡面的 local.setting.json 的 Values 欄位來設定。&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-json&#34; data-language=&#34;json&#34;&gt;&lt;code class=&#34;language-json&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
+  &lt;span class=&#34;token property&#34;&gt;&#34;IsEncrypted&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token boolean&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;token property&#34;&gt;&#34;Values&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
+    &lt;span class=&#34;token property&#34;&gt;&#34;AzureWebJobsStorage&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;UseDevelopmentStorage=true&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;token property&#34;&gt;&#34;FUNCTIONS_WORKER_RUNTIME&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;dotnet&#34;&lt;/span&gt;
+    &lt;span class=&#34;token comment&#34;&gt;// 從下面開始添加自己的設定&lt;/span&gt;
+  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;
+&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;" />
     <meta name="twitter:title" content="Azure Function .Net Core 開發紀錄（二） | MurabitoB&#39;Blog"/>
-    <meta name="twitter:description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發"/>
+    <meta name="twitter:description" content="&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 .Net Core API 專案中，我們習慣透過 appsetting.json 來取得 config 的設定值，在 Azure function 中，需要透過專案根目錄裡面的 local.setting.json 的 Values 欄位來設定。&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-json&#34; data-language=&#34;json&#34;&gt;&lt;code class=&#34;language-json&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
+  &lt;span class=&#34;token property&#34;&gt;&#34;IsEncrypted&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token boolean&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;token property&#34;&gt;&#34;Values&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
+    &lt;span class=&#34;token property&#34;&gt;&#34;AzureWebJobsStorage&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;UseDevelopmentStorage=true&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;token property&#34;&gt;&#34;FUNCTIONS_WORKER_RUNTIME&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;dotnet&#34;&lt;/span&gt;
+    &lt;span class=&#34;token comment&#34;&gt;// 從下面開始添加自己的設定&lt;/span&gt;
+  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;
+&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;"/>
     <script type="application/ld+json">
         {
-            "description": "後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發",
+            "description": "&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 .Net Core API 專案中，我們習慣透過 appsetting.json 來取得 config 的設定值，在 Azure function 中，需要透過專案根目錄裡面的 local.setting.json 的 Values 欄位來設定。&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-json&#34; data-language=&#34;json&#34;&gt;&lt;code class=&#34;language-json&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
+  &lt;span class=&#34;token property&#34;&gt;&#34;IsEncrypted&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token boolean&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;token property&#34;&gt;&#34;Values&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
+    &lt;span class=&#34;token property&#34;&gt;&#34;AzureWebJobsStorage&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;UseDevelopmentStorage=true&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;token property&#34;&gt;&#34;FUNCTIONS_WORKER_RUNTIME&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;dotnet&#34;&lt;/span&gt;
+    &lt;span class=&#34;token comment&#34;&gt;// 從下面開始添加自己的設定&lt;/span&gt;
+  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;
+&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;",
             "author": { "@type": "Person", "name": "MurabitoB" },
             "@type": "BlogPosting",
             "url": "http://murabitob.github.io/post/azure-function-02.html",
@@ -217,57 +257,45 @@
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
             <h1 id="Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數"><a href="#Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數" class="headerlink" title="Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數"></a>Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 .Net Core API 專案中，我們習慣透過 appsetting.json 來取得 config 的設定值，在 Azure function 中，需要透過專案根目錄裡面的 local.setting.json 的 Values 欄位來設定。</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token property">"IsEncrypted"</span><span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"Values"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-        <span class="token property">"AzureWebJobsStorage"</span><span class="token operator">:</span><span class="token string">"UseDevelopmentStorage=true"</span><span class="token punctuation">,</span>
-        <span class="token property">"FUNCTIONS_WORKER_RUNTIME"</span><span class="token operator">:</span><span class="token string">"dotnet"</span><span class="token punctuation">,</span>
-        <span class="token comment">// 從下面開始添加自己的設定</span>
-    <span class="token punctuation">&#125;</span>
+  <span class="token property">"IsEncrypted"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">"Values"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"AzureWebJobsStorage"</span><span class="token operator">:</span> <span class="token string">"UseDevelopmentStorage=true"</span><span class="token punctuation">,</span>
+    <span class="token property">"FUNCTIONS_WORKER_RUNTIME"</span><span class="token operator">:</span> <span class="token string">"dotnet"</span>
+    <span class="token comment">// 從下面開始添加自己的設定</span>
+  <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
-<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
-<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
-<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
-</svg>
-</span><p>與 appsetting.json 不同， Values 裡面的變數不能再包成 json ，而是只能以 Key Value 的形式存在。</p></blockquote>
+<span id="more"></span>
+
+<blockquote>
+<p>與 appsetting.json 不同， Values 裡面的變數不能再包成 json ，而是只能以 Key Value 的形式存在。</p>
+</blockquote>
 <p>如果需要以物件形式存在，則必須填寫成 “&lt;物件名稱&gt;:&lt;變數名稱&gt;”:”變數值” 的形式。</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token property">"IsEncrypted"</span><span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"Values"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
-        <span class="token property">"AzureWebJobsStorage"</span><span class="token operator">:</span><span class="token string">"UseDevelopmentStorage=true"</span><span class="token punctuation">,</span>
-        <span class="token property">"FUNCTIONS_WORKER_RUNTIME"</span><span class="token operator">:</span><span class="token string">"dotnet"</span><span class="token punctuation">,</span>
-        <span class="token comment">// 自訂變數</span>
-        <span class="token property">"UserInfo:Name"</span><span class="token operator">:</span><span class="token string">"MurabitoB"</span>
-    <span class="token punctuation">&#125;</span>
+  <span class="token property">"IsEncrypted"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">"Values"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"AzureWebJobsStorage"</span><span class="token operator">:</span> <span class="token string">"UseDevelopmentStorage=true"</span><span class="token punctuation">,</span>
+    <span class="token property">"FUNCTIONS_WORKER_RUNTIME"</span><span class="token operator">:</span> <span class="token string">"dotnet"</span><span class="token punctuation">,</span>
+    <span class="token comment">// 自訂變數</span>
+    <span class="token property">"UserInfo:Name"</span><span class="token operator">:</span> <span class="token string">"MurabitoB"</span>
+  <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="在程式端取得環境變數"><a href="#在程式端取得環境變數" class="headerlink" title="在程式端取得環境變數"></a>在程式端取得環境變數</h2><p>在程式端可以透過下列的方法取得 config 的值</p>
 <ol>
 <li>System.Environment.GetEnvironmentVariable</li>
 <li>透過 Dependency Inejction + IOption Pattern 來取得環境變數</li>
 </ol>
 <p>在這篇文章我只打算介紹第二種方法，因為使用強型別的物件相對於前者要來的可靠的多。</p>
-<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
-<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
-<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
-<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
-</svg>
-</span><p>DI 的設定可以參考 <a href="https://murabitob.github.io/post/azure-function-01">上篇文章</a></p></blockquote>
+<blockquote>
+<p>DI 的設定可以參考 <a href="https://murabitob.github.io/post/azure-function-01">上篇文章</a></p>
+</blockquote>
 <hr>
 <p>設定要綁定的 Model</p>
 <pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserInfo</span>
 <span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Name <span class="token punctuation">&#123;</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>               <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>在 IFunctionsHostBuilder 裡面設定 IOptionPattern</p>
 <pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Configure</span><span class="token punctuation">(</span><span class="token class-name">IFunctionsHostBuilder</span> builder<span class="token punctuation">)</span>
@@ -288,7 +316,6 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
         </div>
 
     </div>
@@ -307,7 +334,7 @@
 <nav class="article-nav">
   
     <a href="/post/toolkit.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">次の記事</div>
+      <div class="article-nav-caption">prossimo</div>
       <div class="article-nav-title">
         
           開發工具清單
@@ -317,7 +344,7 @@
   
   
     <a href="/post/azure-function-01.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">前の記事</div>
+      <div class="article-nav-caption">precedente</div>
       <div class="article-nav-title">Azure Function .Net Core 開發紀錄（一）</div>
     </a>
   
@@ -325,7 +352,7 @@
 
 
     <section class="share">
-        <div class="share-title">シェア</div>
+        <div class="share-title">share</div>
         <a class="share-item" target="_blank"
             href="https://twitter.com/share?text=Azure Function .Net Core 開發紀錄（二） - MurabitoB'Blog&url=http%3A%2F%2Fmurabitob.github.io%2Fpost%2Fazure-function-02.html">
             <ion-icon name="logo-twitter"></ion-icon>

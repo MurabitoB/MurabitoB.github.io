@@ -8,7 +8,16 @@
     
     <title>.Net Core Dependency Injection Scoped 注入到 Singleton | MurabitoB&#39;Blog</title>
 
-    <meta name="description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發">
+    <meta name="description" content="&lt;h3 id=&#34;環境&#34;&gt;&lt;a href=&#34;#環境&#34; class=&#34;headerlink&#34; title=&#34;環境&#34;&gt;&lt;/a&gt;環境&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;.Net Core 3.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;問題&#34;&gt;&lt;a href=&#34;#問題&#34; class=&#34;headerlink&#34; title=&#34;問題&#34;&gt;&lt;/a&gt;問題&lt;/h3&gt;&lt;p&gt;踩雷．&lt;/p&gt;
+&lt;p&gt;在專案中如果想對 Singleton 的 Service 中直接注入 Scoped 的 Service 的話，會拋出 Exception&lt;/p&gt;
+&lt;p&gt;下面範例取自黑暗執行緒&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-csharp&#34; data-language=&#34;csharp&#34;&gt;&lt;code class=&#34;language-csharp&#34;&gt;System&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;AggregateException&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &#39;Some services are &lt;span class=&#34;token keyword&#34;&gt;not&lt;/span&gt; able to &lt;span class=&#34;token return-type class-name&#34;&gt;be&lt;/span&gt; constructed &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;Error &lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; validating the service descriptor &#39;ServiceType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&lt;/span&gt; Lifetime&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt; ImplementationType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;MemoryUsageMonitor&#39;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; Cannot consume scoped service &#39;CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;JournalDbContext&#39; &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; singleton &#39;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&#39;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&#39;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;原因是因為是在 Scoped 的生命週期結束後（一次 Request）， Singleton 依然會存在，這並不符合設計的規範．&lt;/p&gt;">
     <meta name="keywords" content="">
 
     
@@ -16,17 +25,53 @@
     <meta property="og:locale" content="zh-TW" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content= ".Net Core Dependency Injection Scoped 注入到 Singleton | MurabitoB&#39;Blog"  />
-    <meta property="og:description" content= "後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發" />
+    <meta property="og:description" content= "&lt;h3 id=&#34;環境&#34;&gt;&lt;a href=&#34;#環境&#34; class=&#34;headerlink&#34; title=&#34;環境&#34;&gt;&lt;/a&gt;環境&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;.Net Core 3.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;問題&#34;&gt;&lt;a href=&#34;#問題&#34; class=&#34;headerlink&#34; title=&#34;問題&#34;&gt;&lt;/a&gt;問題&lt;/h3&gt;&lt;p&gt;踩雷．&lt;/p&gt;
+&lt;p&gt;在專案中如果想對 Singleton 的 Service 中直接注入 Scoped 的 Service 的話，會拋出 Exception&lt;/p&gt;
+&lt;p&gt;下面範例取自黑暗執行緒&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-csharp&#34; data-language=&#34;csharp&#34;&gt;&lt;code class=&#34;language-csharp&#34;&gt;System&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;AggregateException&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &#39;Some services are &lt;span class=&#34;token keyword&#34;&gt;not&lt;/span&gt; able to &lt;span class=&#34;token return-type class-name&#34;&gt;be&lt;/span&gt; constructed &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;Error &lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; validating the service descriptor &#39;ServiceType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&lt;/span&gt; Lifetime&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt; ImplementationType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;MemoryUsageMonitor&#39;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; Cannot consume scoped service &#39;CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;JournalDbContext&#39; &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; singleton &#39;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&#39;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&#39;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;原因是因為是在 Scoped 的生命週期結束後（一次 Request）， Singleton 依然會存在，這並不符合設計的規範．&lt;/p&gt;" />
     <meta property="og:url" content="http://murabitob.github.io/post/dotnet-core-scoped-in-singleton.html" />
     <meta property="og:site_name" content="" />
     <meta property="article:author" content="MurabitoB" />
     <meta property="article:publisher" content="" />
-    <meta property="og:description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發" />
+    <meta property="og:description" content="&lt;h3 id=&#34;環境&#34;&gt;&lt;a href=&#34;#環境&#34; class=&#34;headerlink&#34; title=&#34;環境&#34;&gt;&lt;/a&gt;環境&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;.Net Core 3.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;問題&#34;&gt;&lt;a href=&#34;#問題&#34; class=&#34;headerlink&#34; title=&#34;問題&#34;&gt;&lt;/a&gt;問題&lt;/h3&gt;&lt;p&gt;踩雷．&lt;/p&gt;
+&lt;p&gt;在專案中如果想對 Singleton 的 Service 中直接注入 Scoped 的 Service 的話，會拋出 Exception&lt;/p&gt;
+&lt;p&gt;下面範例取自黑暗執行緒&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-csharp&#34; data-language=&#34;csharp&#34;&gt;&lt;code class=&#34;language-csharp&#34;&gt;System&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;AggregateException&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &#39;Some services are &lt;span class=&#34;token keyword&#34;&gt;not&lt;/span&gt; able to &lt;span class=&#34;token return-type class-name&#34;&gt;be&lt;/span&gt; constructed &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;Error &lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; validating the service descriptor &#39;ServiceType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&lt;/span&gt; Lifetime&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt; ImplementationType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;MemoryUsageMonitor&#39;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; Cannot consume scoped service &#39;CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;JournalDbContext&#39; &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; singleton &#39;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&#39;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&#39;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;原因是因為是在 Scoped 的生命週期結束後（一次 Request）， Singleton 依然會存在，這並不符合設計的規範．&lt;/p&gt;" />
     <meta name="twitter:title" content=".Net Core Dependency Injection Scoped 注入到 Singleton | MurabitoB&#39;Blog"/>
-    <meta name="twitter:description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發"/>
+    <meta name="twitter:description" content="&lt;h3 id=&#34;環境&#34;&gt;&lt;a href=&#34;#環境&#34; class=&#34;headerlink&#34; title=&#34;環境&#34;&gt;&lt;/a&gt;環境&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;.Net Core 3.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;問題&#34;&gt;&lt;a href=&#34;#問題&#34; class=&#34;headerlink&#34; title=&#34;問題&#34;&gt;&lt;/a&gt;問題&lt;/h3&gt;&lt;p&gt;踩雷．&lt;/p&gt;
+&lt;p&gt;在專案中如果想對 Singleton 的 Service 中直接注入 Scoped 的 Service 的話，會拋出 Exception&lt;/p&gt;
+&lt;p&gt;下面範例取自黑暗執行緒&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-csharp&#34; data-language=&#34;csharp&#34;&gt;&lt;code class=&#34;language-csharp&#34;&gt;System&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;AggregateException&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &#39;Some services are &lt;span class=&#34;token keyword&#34;&gt;not&lt;/span&gt; able to &lt;span class=&#34;token return-type class-name&#34;&gt;be&lt;/span&gt; constructed &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;Error &lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; validating the service descriptor &#39;ServiceType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&lt;/span&gt; Lifetime&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt; ImplementationType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;MemoryUsageMonitor&#39;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; Cannot consume scoped service &#39;CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;JournalDbContext&#39; &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; singleton &#39;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&#39;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&#39;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;原因是因為是在 Scoped 的生命週期結束後（一次 Request）， Singleton 依然會存在，這並不符合設計的規範．&lt;/p&gt;"/>
     <script type="application/ld+json">
         {
-            "description": "後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發",
+            "description": "&lt;h3 id=&#34;環境&#34;&gt;&lt;a href=&#34;#環境&#34; class=&#34;headerlink&#34; title=&#34;環境&#34;&gt;&lt;/a&gt;環境&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;.Net Core 3.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;問題&#34;&gt;&lt;a href=&#34;#問題&#34; class=&#34;headerlink&#34; title=&#34;問題&#34;&gt;&lt;/a&gt;問題&lt;/h3&gt;&lt;p&gt;踩雷．&lt;/p&gt;
+&lt;p&gt;在專案中如果想對 Singleton 的 Service 中直接注入 Scoped 的 Service 的話，會拋出 Exception&lt;/p&gt;
+&lt;p&gt;下面範例取自黑暗執行緒&lt;/p&gt;
+&lt;pre class=&#34;line-numbers language-csharp&#34; data-language=&#34;csharp&#34;&gt;&lt;code class=&#34;language-csharp&#34;&gt;System&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;AggregateException&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &#39;Some services are &lt;span class=&#34;token keyword&#34;&gt;not&lt;/span&gt; able to &lt;span class=&#34;token return-type class-name&#34;&gt;be&lt;/span&gt; constructed &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;Error &lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; validating the service descriptor &#39;ServiceType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&lt;/span&gt; Lifetime&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt; ImplementationType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;MemoryUsageMonitor&#39;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; Cannot consume scoped service &#39;CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;JournalDbContext&#39; &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; singleton &#39;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&#39;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&#39;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;原因是因為是在 Scoped 的生命週期結束後（一次 Request）， Singleton 依然會存在，這並不符合設計的規範．&lt;/p&gt;",
             "author": { "@type": "Person", "name": "MurabitoB" },
             "@type": "BlogPosting",
             "url": "http://murabitob.github.io/post/dotnet-core-scoped-in-singleton.html",
@@ -220,11 +265,13 @@
 </ul>
 <hr>
 <h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>踩雷．</p>
-<p>在專案中如果想對 Singleton 的 Service 中直接注入 Scoped 的 Service 的話，會拋出 Exception </p>
+<p>在專案中如果想對 Singleton 的 Service 中直接注入 Scoped 的 Service 的話，會拋出 Exception</p>
 <p>下面範例取自黑暗執行緒</p>
 <pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp">System<span class="token punctuation">.</span>AggregateException<span class="token punctuation">:</span> 'Some services are <span class="token keyword">not</span> able to <span class="token return-type class-name">be</span> constructed <span class="token punctuation">(</span>Error <span class="token keyword">while</span> validating the service descriptor 'ServiceType<span class="token punctuation">:</span> <span class="token class-name">Microsoft<span class="token punctuation">.</span>Extensions<span class="token punctuation">.</span>Hosting<span class="token punctuation">.</span>IHostedService</span> Lifetime<span class="token punctuation">:</span> <span class="token class-name">Singleton</span> ImplementationType<span class="token punctuation">:</span> CRUDExample<span class="token punctuation">.</span>Models<span class="token punctuation">.</span>MemoryUsageMonitor'<span class="token punctuation">:</span> Cannot consume scoped service 'CRUDExample<span class="token punctuation">.</span>Models<span class="token punctuation">.</span>JournalDbContext' <span class="token keyword">from</span> singleton 'Microsoft<span class="token punctuation">.</span>Extensions<span class="token punctuation">.</span>Hosting<span class="token punctuation">.</span>IHostedService'<span class="token punctuation">.</span><span class="token punctuation">)</span>'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>原因是因為是在 Scoped 的生命週期結束後（一次 Request）， Singleton 依然會存在，這並不符合設計的規範．</p>
+<span id="more"></span>
+
 <h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>如果要解決這問題，可以在 Singleton Service 定義一個 Scope，透過在 Singleton 的 service provider ，再透過該 service provider 來提供 Scope 的區間，明確定義出 Scope 的範圍，這樣就可以迴避掉 exception．</p>
 <pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp"><span class="token comment">// 先注入 IServiceProvider 到你的 class</span>
 <span class="token keyword">public</span> <span class="token function">YourClass</span><span class="token punctuation">(</span><span class="token class-name">IServiceProvider</span> serviceProvider<span class="token punctuation">)</span>
@@ -259,7 +306,7 @@
 <nav class="article-nav">
   
     <a href="/post/azure-function-01.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">次の記事</div>
+      <div class="article-nav-caption">prossimo</div>
       <div class="article-nav-title">
         
           Azure Function .Net Core 開發紀錄（一）
@@ -269,7 +316,7 @@
   
   
     <a href="/post/Entityframework-Identity.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">前の記事</div>
+      <div class="article-nav-caption">precedente</div>
       <div class="article-nav-title">Entity Framework Identity 插入資料時自動獲得id</div>
     </a>
   
@@ -277,7 +324,7 @@
 
 
     <section class="share">
-        <div class="share-title">シェア</div>
+        <div class="share-title">share</div>
         <a class="share-item" target="_blank"
             href="https://twitter.com/share?text=.Net Core Dependency Injection Scoped 注入到 Singleton - MurabitoB'Blog&url=http%3A%2F%2Fmurabitob.github.io%2Fpost%2Fdotnet-core-scoped-in-singleton.html">
             <ion-icon name="logo-twitter"></ion-icon>
