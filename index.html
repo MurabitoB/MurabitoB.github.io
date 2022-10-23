@@ -1,1 +1,822 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><link href="/static/css/chunk-libs.eebac533.css" rel="stylesheet"><link href="/static/css/app.0d31776f.css" rel="stylesheet"><!-- hexo injector head_end start --><script rel="prefetch" async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/components/prism-core.js" data-manual></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/toolbar/prism-toolbar.min.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/themes/prism.min.css"/><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/prism/1.23.0/plugins/toolbar/prism-toolbar.min.css"/><link rel="stylesheet" href="https://fonts.loli.net/css?family=Rubik" /><script rel="preload" src="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.2/gitalk.min.js"></script><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.2/gitalk.min.css"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" integrity="sha512-OdEXQYCOldjqUEsuMKsZRj93Ht23QRlhIb8E/X0sbwZhme8eUw6g8q7AdxGJKakcBbv7+/PX0Gc2btf7Ru8cZA==" crossorigin="anonymous" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body id="body-container"><noscript><strong>We're sorry but Aurora Blog doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script>(function(e){function t(t){for(var a,n,u=t[0],i=t[1],c=t[2],l=0,p=[];l<u.length;l++)n=u[l],Object.prototype.hasOwnProperty.call(o,n)&&o[n]&&p.push(o[n][0]),o[n]=0;for(a in i)Object.prototype.hasOwnProperty.call(i,a)&&(e[a]=i[a]);f&&f(t);while(p.length)p.shift()();return s.push.apply(s,c||[]),r()}function r(){for(var e,t=0;t<s.length;t++){for(var r=s[t],a=!0,n=1;n<r.length;n++){var u=r[n];0!==o[u]&&(a=!1)}a&&(s.splice(t--,1),e=i(i.s=r[0]))}return e}var a={},n={runtime:0},o={runtime:0},s=[];function u(e){return i.p+"static/js/"+({404:"404",about:"about",archives:"archives",categories:"categories",page:"page",post:"post",result:"result",tags:"tags"}[e]||e)+"."+{404:"00d640a8",about:"024aacd1",archives:"574ac664",categories:"90aa5475",page:"a02618ad",post:"cebfbaa4",result:"39470350",tags:"2ad613f5"}[e]+".js"}function i(t){if(a[t])return a[t].exports;var r=a[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.e=function(e){var t=[],r={404:1,about:1,archives:1,categories:1,page:1,post:1,result:1,tags:1};n[e]?t.push(n[e]):0!==n[e]&&r[e]&&t.push(n[e]=new Promise((function(t,r){for(var a="static/css/"+({404:"404",about:"about",archives:"archives",categories:"categories",page:"page",post:"post",result:"result",tags:"tags"}[e]||e)+"."+{404:"1a6cd5bd",about:"32dfa3b0",archives:"c0d49bd5",categories:"10e2be12",page:"749ad047",post:"9f951a60",result:"10e2be12",tags:"10e2be12"}[e]+".css",o=i.p+a,s=document.getElementsByTagName("link"),u=0;u<s.length;u++){var c=s[u],l=c.getAttribute("data-href")||c.getAttribute("href");if("stylesheet"===c.rel&&(l===a||l===o))return t()}var p=document.getElementsByTagName("style");for(u=0;u<p.length;u++){c=p[u],l=c.getAttribute("data-href");if(l===a||l===o)return t()}var f=document.createElement("link");f.rel="stylesheet",f.type="text/css",f.onload=t,f.onerror=function(t){var a=t&&t.target&&t.target.src||o,s=new Error("Loading CSS chunk "+e+" failed.\n("+a+")");s.code="CSS_CHUNK_LOAD_FAILED",s.request=a,delete n[e],f.parentNode.removeChild(f),r(s)},f.href=o;var d=document.getElementsByTagName("head")[0];d.appendChild(f)})).then((function(){n[e]=0})));var a=o[e];if(0!==a)if(a)t.push(a[2]);else{var s=new Promise((function(t,r){a=o[e]=[t,r]}));t.push(a[2]=s);var c,l=document.createElement("script");l.charset="utf-8",l.timeout=120,i.nc&&l.setAttribute("nonce",i.nc),l.src=u(e);var p=new Error;c=function(t){l.onerror=l.onload=null,clearTimeout(f);var r=o[e];if(0!==r){if(r){var a=t&&("load"===t.type?"missing":t.type),n=t&&t.target&&t.target.src;p.message="Loading chunk "+e+" failed.\n("+a+": "+n+")",p.name="ChunkLoadError",p.type=a,p.request=n,r[1](p)}o[e]=void 0}};var f=setTimeout((function(){c({type:"timeout",target:l})}),12e4);l.onerror=l.onload=c,document.head.appendChild(l)}return Promise.all(t)},i.m=e,i.c=a,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){"undefined"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&"object"===typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var a in e)i.d(r,a,function(t){return e[t]}.bind(null,a));return r},i.n=function(e){var t=e&&e.__esModule?function(){return e["default"]}:function(){return e};return i.d(t,"a",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p="/",i.oe=function(e){throw console.error(e),e};var c=window["webpackJsonp"]=window["webpackJsonp"]||[],l=c.push.bind(c);c.push=t,c=c.slice();for(var p=0;p<c.length;p++)t(c[p]);var f=l;r()})([]);</script><script src="/static/js/chunk-libs.dc6146cd.js"></script><script src="/static/js/app.6d2c358d.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>MurabitoB&#39;Blog</title>
+
+    <meta name="description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發">
+    <meta name="keywords" content="">
+
+    
+
+
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:locale" content="zh-TW" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://murabitob.github.io/index.html" />
+    <meta property="og:site_name" content="MurabitoB" />
+    <meta property="article:publisher" content="" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "",
+            "description": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "MurabitoB"
+            },
+        }
+    </script>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = false
+        window.aomori = {
+            
+            gitalk: {
+                enable: true,
+                clientID: "2dbcfa1a9b799109cc68",
+                clientSecret: "889d020c927ce43e47c00fcfe18d20ad13ead0e1",
+                repo: "889d020c927ce43e47c00fcfe18d20ad13ead0e1",
+                owner: "MurabitoB",
+                admin: ["MurabitoB",],
+                distractionFreeMode: true // Facebook-like distraction free mode  // Facebook-like distraction free mode
+            },
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>MurabitoB&#39;Blog</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+            </div>
+            <div class="header-menu-social">
+                
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="index">
+  
+    
+      <article
+id="post-2022 年度目標 - 總結"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+    <div class="article-feature">
+        <a href="/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html">
+            <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E"
+                data-src="https://images.unsplash.com/photo-1593062096033-9a26b09da705?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3540&q=80"
+                alt="item.title"
+                class="lazy"
+            />
+        </a>
+    </div>
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html">2022 年度目標 - 總結</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>這篇文章於 2022/10/23 所撰寫，距離 2022 年結束只剩下兩個月的時間</p>
+<h2 id="在這一年，我經歷了"><a href="#在這一年，我經歷了" class="headerlink" title="在這一年，我經歷了"></a>在這一年，我經歷了</h2><hr>
+<h3 id="個人："><a href="#個人：" class="headerlink" title="個人："></a>個人：</h3><ol>
+<li>使用 Angular / Unity / .Net Core 開發了<a target="_blank" rel="noopener" href="https://lit.link/en/springfish">春魚工作室</a>的抖內網站，Unity抖內箱，抖內互動留言觀測後台，此外也學會了 <code>Github Action</code> 的使用方法，<code>Github Action</code> 的免費額度對於個人使用來說真的很堪用，不過 Storage 的部分就要精打細算了，虧此也了解到了怎麼規劃減少打包的大小，以及 package 的 expired 設定</li>
+<li>引用 <a target="_blank" rel="noopener" href="https://github.com/PoiScript/HoloStats">https://github.com/PoiScript/HoloStats</a> 幫<a target="_blank" rel="noopener" href="https://lit.link/en/springfish">春魚工作室</a>架了台灣 Vtuber 觀測站，並且追加了一些 feature，鎖登入、在列表顯示每支影片的贊助金額 (後端是 Rust，超難寫！！！)</li>
+</ol>
+<hr>
+<h3 id="工作："><a href="#工作：" class="headerlink" title="工作："></a>工作：</h3><ol>
+<li>作為 SD 規劃了 <a target="_blank" rel="noopener" href="https://www.zingala.com/">zingala銀角零卡 | 買你所愛 隨你分期</a> 的雲端架構及部分的內容開發<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><ul>
+<li>開發： <code>.Net Core API</code> 及使用 <code>Angular</code> 及協助後台部分的 CMS 開發</li>
+<li> 規劃： <code>Cloud Native Architecture</code>，作為 Developer 算是對 Kubernetes 有一些熟練了，此外也學會了 <code>Azure DevOps</code> 的 CI / CD 的架設方法，然後也對透過 <code>EFK / Grafana / Jaegar</code> 等 Service 來對服務進行觀測有點心得</li>
+<li> 教育訓練： 嘗試對同事進行 <code>Cloud Native</code> 架構的教育訓練，並且在離職前留下了 20+ 的教學影片，希望自己種下的火苗不會被澆熄</li>
+</ul></blockquote>
+</li>
+<li>做了Angular的專案架構規劃，對專案資料夾進行切分，並且放一些架構面的東西在專案裡面，例如全域錯誤處理、預先配置好了<code>SSR</code> 的設定及兩種版本的<code> DockerFile</code>，只要在 <code>Azure DevOps</code> 進行 CI 選擇指定的 <code>DockerFile</code> 就可以決定專案要不要走 <code>Angular Universal</code> 。</li>
+<li>換了工作到一間外商，感覺相對之前來說比較 Work Life Balance ，但是在工作上技術的成長就有點停滯了，所以打算利用閒暇的時間進行一些對個人職涯有利的學習，這個後面會提到。</li>
+</ol>
+<hr>
+<h3 id="學習："><a href="#學習：" class="headerlink" title="學習："></a>學習：</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> Angular<br>雖然 Angular 的官方文件寫得很好，但是個人學習比較喜歡跟著影片一步一步做，有個基礎後再回頭補文件，所以就買了 Udemy的課程開始跑，個人滿喜歡影片作者先教以新手角度實作 feature，然後指出有哪些錯誤再進行重構的教法，例如不要太依賴 <code>@ViewChild</code> 對 Componenet 進行操作。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.udemy.com/course/the-complete-guide-to-angular-2/">Master Angular 7 (formerly Angular 2): The Complete Course | Udemy</a></p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Html / CSS<br>單純是因為主要工作性質一直在偏向前後端架構規劃，以及 Cloud Native 的架構設計，但是最近在做 Side Project 的時候發現切版已經成為了我的硬傷，所以買了 Udemy 的課程來複習一下基礎的切版。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/">Build Responsive Websites with HTML5 and CSS3 | Udemy</a></p>
+<ul>
+<li><input disabled="" type="checkbox"> AZ-900<br>之前掛微軟的線上培訓拿到了考試券，感覺不考掉有點可惜，不過一直抽不出時間去考，所以希望能夠在年底前把這件事完結掉，所以老樣子又買了 Udemy 的線上課程。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.udemy.com/course/az900-azure/">AZ-900: Microsoft Azure Fundamentals Exam Prep - AUG 2022 | Udemy</a></p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Docker</li>
+</ul>
+<p>其實在做案子的時候一直不熟 Docker ，甚至到做完也還是很不熟，後來才花了一點時間補基礎，了解了一些 Docker 的基本概念，例如 Docker、VM 之間的差異，還有一些基本觀念 ex: docker-compose、mount，目前的了解程度就是夠用，但短時間內沒打算繼續深入。</p>
+<ul>
+<li><input disabled="" type="checkbox"> Kubernetes<br>在之前的工作中一直有在應用，但是僅限於了解 deployment / service / pod / cronjob / configmap/ secret …那些 component 之間在幹嘛，及一些參數的設定，但感覺自己在摸的還是很鳳毛麟角，所以想挑戰一下 <a target="_blank" rel="noopener" href="https://www.cncf.io/certification/ckad/">CKAD</a>，今年應該會先準備，明年才會挑戰把他考過。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.udemy.com/course/certified-kubernetes-application-developer/">Kubernetes Certified Application Developer (CKAD) Training | Udemy</a></p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> Helm<br>helm 是 kubernetes 的套件管理器，其實是到新公司才發現有這東西，之前在前公司做 Kubernetes 的部署都是一個 yaml 一個 yaml apply 上去，有些 dependcy 沒處理好就會炸掉，看到這東西感覺發現了新大陸，於是就手刀買了課程開始學習，學完有種相見恨晚的感覺。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.udemy.com/course/helm-kubernetes-packaging-manager-for-developers-and-devops/">Helm Kubernetes Packaging Manager for Developers and DevOps | Udemy</a></p>
+<ul>
+<li><input disabled="" type="checkbox"> LeetCode<br>工程師的惡夢，其實平常就沒怎麼在刷，所以想要撥出一點閒暇的時間開始每天練一點點。</li>
+</ul>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-10-23T05:39:43.000Z" itemprop="datePublished">2022-10-23</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99/">年度目標</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Side-Project/" rel="tag">Side Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag">學習</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-toolkit"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/post/toolkit.html">開發工具清單</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="個人常用開發工具及參考文章"><a href="#個人常用開發工具及參考文章" class="headerlink" title="個人常用開發工具及參考文章"></a>個人常用開發工具及參考文章</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這裡主要條列一些常用開發的工具及 SDk 以便之後要換電腦的時候快速索引。</p>
+<h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/downloads">Git</a></li>
+</ol>
+<h2 id="IDE-文字編輯器"><a href="#IDE-文字編輯器" class="headerlink" title="IDE / 文字編輯器"></a>IDE / 文字編輯器</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.jetbrains.com/rider/">Jetbrain - Rider</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+</ol>
+<h2 id="容器化"><a href="#容器化" class="headerlink" title="容器化"></a>容器化</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.docker.com/products/docker-desktop/">Docker</a></li>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
+<li><a target="_blank" rel="noopener" href="https://k8slens.dev/">k8sLens</a></li>
+</ol>
+<h3 id="雲端"><a href="#雲端" class="headerlink" title="雲端"></a>雲端</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/cli/azure/install-azure-cli-macos">Azure CLI</a></li>
+</ol>
+<h2 id="遠端連線工具"><a href="#遠端連線工具" class="headerlink" title="遠端連線工具"></a>遠端連線工具</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/download.html">MobaXterm</a></li>
+<li><a target="_blank" rel="noopener" href="https://mremoteng.org/">mRemoteNG</a></li>
+<li><a target="_blank" rel="noopener" href="https://termius.com/">Termius</a></li>
+</ol>
+<h2 id="SDK"><a href="#SDK" class="headerlink" title="SDK"></a>SDK</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/en/">NodeJS</a></li>
+<li><a target="_blank" rel="noopener" href="https://dotnet.microsoft.com/en-us/download">.NET Core</a></li>
+</ol>
+<h2 id="截圖工具"><a href="#截圖工具" class="headerlink" title="截圖工具"></a>截圖工具</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://app.prntscr.com/zh-cn/index.html">LightShot</a></li>
+</ol>
+<h2 id="資料庫"><a href="#資料庫" class="headerlink" title="資料庫"></a>資料庫</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16">SQL Server Management Studio</a></li>
+</ol>
+<h2 id="Mac-專用"><a href="#Mac-專用" class="headerlink" title="Mac 專用"></a>Mac 專用</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://brew.sh/index_zh-tw">homebrew</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.kwchang0831.dev/dev-env/macos/oh-my-zsh">Oh My Zsh 教學</a></li>
+</ol>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-09-13T06:00:00.000Z" itemprop="datePublished">2022-09-13</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7/" rel="tag">開發工具</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-azure-function-02"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/post/azure-function-02.html">Azure Function .Net Core 開發紀錄（二）</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數"><a href="#Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數" class="headerlink" title="Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數"></a>Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 .Net Core API 專案中，我們習慣透過 appsetting.json 來取得 config 的設定值，在 Azure function 中，需要透過專案根目錄裡面的 local.setting.json 的 Values 欄位來設定。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"IsEncrypted"</span><span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"Values"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+        <span class="token property">"AzureWebJobsStorage"</span><span class="token operator">:</span><span class="token string">"UseDevelopmentStorage=true"</span><span class="token punctuation">,</span>
+        <span class="token property">"FUNCTIONS_WORKER_RUNTIME"</span><span class="token operator">:</span><span class="token string">"dotnet"</span><span class="token punctuation">,</span>
+        <span class="token comment">// 從下面開始添加自己的設定</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>與 appsetting.json 不同， Values 裡面的變數不能再包成 json ，而是只能以 Key Value 的形式存在。</p></blockquote>
+<p>如果需要以物件形式存在，則必須填寫成 “&lt;物件名稱&gt;:&lt;變數名稱&gt;”:”變數值” 的形式。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token property">"IsEncrypted"</span><span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"Values"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span>
+        <span class="token property">"AzureWebJobsStorage"</span><span class="token operator">:</span><span class="token string">"UseDevelopmentStorage=true"</span><span class="token punctuation">,</span>
+        <span class="token property">"FUNCTIONS_WORKER_RUNTIME"</span><span class="token operator">:</span><span class="token string">"dotnet"</span><span class="token punctuation">,</span>
+        <span class="token comment">// 自訂變數</span>
+        <span class="token property">"UserInfo:Name"</span><span class="token operator">:</span><span class="token string">"MurabitoB"</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="在程式端取得環境變數"><a href="#在程式端取得環境變數" class="headerlink" title="在程式端取得環境變數"></a>在程式端取得環境變數</h2><p>在程式端可以透過下列的方法取得 config 的值</p>
+<ol>
+<li>System.Environment.GetEnvironmentVariable</li>
+<li>透過 Dependency Inejction + IOption Pattern 來取得環境變數</li>
+</ol>
+<p>在這篇文章我只打算介紹第二種方法，因為使用強型別的物件相對於前者要來的可靠的多。</p>
+<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot="">
+<path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path>
+<path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path>
+<path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path>
+</svg>
+</span><p>DI 的設定可以參考 <a href="https://murabitob.github.io/post/azure-function-01">上篇文章</a></p></blockquote>
+<hr>
+<p>設定要綁定的 Model</p>
+<pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserInfo</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Name <span class="token punctuation">&#123;</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>               <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>在 IFunctionsHostBuilder 裡面設定 IOptionPattern</p>
+<pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Configure</span><span class="token punctuation">(</span><span class="token class-name">IFunctionsHostBuilder</span> builder<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    builder<span class="token punctuation">.</span>Services<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddOptions</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>UserInfo<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token generic-method"><span class="token function">Configure</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>IConfiguration<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">(</span>settings<span class="token punctuation">,</span> configuration<span class="token punctuation">)</span><span class="token operator">=></span>
+                    <span class="token punctuation">&#123;</span>
+                        configufration<span class="token punctuation">.</span><span class="token function">GetSection</span><span class="token punctuation">(</span><span class="token string">"UserInfo"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Bind</span><span class="token punctuation">(</span>settings<span class="token punctuation">)</span>
+                    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接著再透過 DI 取得 IOption 物件</p>
+<pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp"><span class="token keyword">public</span> UserService
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token function">UserService</span><span class="token punctuation">(</span><span class="token class-name">IOptions<span class="token punctuation">&lt;</span>UserInfo<span class="token punctuation">></span></span> userInfo<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token class-name"><span class="token keyword">var</span></span> name <span class="token operator">=</span> userInfo<span class="token punctuation">.</span>Value<span class="token punctuation">.</span>Name<span class="token punctuation">;</span> <span class="token comment">// MurabitoB</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-09-25T08:00:00.000Z" itemprop="datePublished">2021-09-25</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure-Function/" rel="tag">Azure Function</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-azure-function-01"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/post/azure-function-01.html">Azure Function .Net Core 開發紀錄（一）</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection"><a href="#Azure-Function-Net-Core-開發紀錄（一）-如何進行-Dependency-Injection" class="headerlink" title="Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection"></a>Azure Function .Net Core 開發紀錄（一） 如何進行 Dependency Injection</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 Visual Studio 建立新的 Azure Function 的專案的時候，預設是不會有 Dependency Inejction 的相關設定，但是可以透過安裝 nuget 套件來進行設定。</p>
+<h2 id="安裝套件"><a href="#安裝套件" class="headerlink" title="安裝套件"></a>安裝套件</h2><h3 id="安裝-Microosft-Azure-Functions-Extensions-套件"><a href="#安裝-Microosft-Azure-Functions-Extensions-套件" class="headerlink" title="安裝 Microosft.Azure.Functions.Extensions 套件"></a>安裝 Microosft.Azure.Functions.Extensions 套件</h3><p><img src="https://i.imgur.com/DY8Tf5u.png"></p>
+<h2 id="設定-Startup"><a href="#設定-Startup" class="headerlink" title="設定 Startup"></a>設定 Startup</h2><p>與 .net core API 專案的 Template 不同， Azure Function 的專案預設是不會建立 Startup ，所以需要自行建立入口的 class。</p>
+<pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp"><span class="token comment">// Startup.cs</span>
+<span class="token keyword">using</span> <span class="token namespace">Microsoft<span class="token punctuation">.</span>Azure<span class="token punctuation">.</span>Functions<span class="token punctuation">.</span>Extensions<span class="token punctuation">.</span>DependencyInjection</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">Microsoft<span class="token punctuation">.</span>Extensions<span class="token punctuation">.</span>DependencyInjection</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span><span class="token attribute"><span class="token target keyword">assembly</span><span class="token punctuation">:</span> <span class="token class-name">FunctionsStartup</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token keyword">typeof</span><span class="token punctuation">(</span><span class="token type-expression class-name">MyNamespace<span class="token punctuation">.</span>Startup</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">MyNamespace</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Startup</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">FunctionsStartup</span></span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Configure</span><span class="token punctuation">(</span><span class="token class-name">IFunctionsHostBuilder</span> builder<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            builder<span class="token punctuation">.</span>Services<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddSingleton</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>ILoggerProvider<span class="token punctuation">,</span> MyLoggerProvider<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><p>Azure Function 預設的 template 提供的 function 會掛 static 修飾詞，要記得拔掉，否則無法取得 DI 的物件。</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-tw/azure/azure-functions/functions-dotnet-dependency-injection">https://docs.microsoft.com/zh-tw/azure/azure-functions/functions-dotnet-dependency-injection</a></p>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-09-25T06:00:00.000Z" itemprop="datePublished">2021-09-25</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure-Function/" rel="tag">Azure Function</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-dotnet-core-scoped-in-singleton"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/post/dotnet-core-scoped-in-singleton.html">.Net Core Dependency Injection Scoped 注入到 Singleton</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h3 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h3><ul>
+<li>.Net Core 3.1</li>
+</ul>
+<hr>
+<h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>踩雷．</p>
+<p>在專案中如果想對 Singleton 的 Service 中直接注入 Scoped 的 Service 的話，會拋出 Exception </p>
+<p>下面範例取自黑暗執行緒</p>
+<pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp">System<span class="token punctuation">.</span>AggregateException<span class="token punctuation">:</span> 'Some services are <span class="token keyword">not</span> able to <span class="token return-type class-name">be</span> constructed <span class="token punctuation">(</span>Error <span class="token keyword">while</span> validating the service descriptor 'ServiceType<span class="token punctuation">:</span> <span class="token class-name">Microsoft<span class="token punctuation">.</span>Extensions<span class="token punctuation">.</span>Hosting<span class="token punctuation">.</span>IHostedService</span> Lifetime<span class="token punctuation">:</span> <span class="token class-name">Singleton</span> ImplementationType<span class="token punctuation">:</span> CRUDExample<span class="token punctuation">.</span>Models<span class="token punctuation">.</span>MemoryUsageMonitor'<span class="token punctuation">:</span> Cannot consume scoped service 'CRUDExample<span class="token punctuation">.</span>Models<span class="token punctuation">.</span>JournalDbContext' <span class="token keyword">from</span> singleton 'Microsoft<span class="token punctuation">.</span>Extensions<span class="token punctuation">.</span>Hosting<span class="token punctuation">.</span>IHostedService'<span class="token punctuation">.</span><span class="token punctuation">)</span>'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>原因是因為是在 Scoped 的生命週期結束後（一次 Request）， Singleton 依然會存在，這並不符合設計的規範．</p>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>如果要解決這問題，可以在 Singleton Service 定義一個 Scope，透過在 Singleton 的 service provider ，再透過該 service provider 來提供 Scope 的區間，明確定義出 Scope 的範圍，這樣就可以迴避掉 exception．</p>
+<pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp"><span class="token comment">// 先注入 IServiceProvider 到你的 class</span>
+<span class="token keyword">public</span> <span class="token function">YourClass</span><span class="token punctuation">(</span><span class="token class-name">IServiceProvider</span> serviceProvider<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    _serviceProvider <span class="token operator">=</span> serviceProvider<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 生成 Scope</span>
+<span class="token keyword">using</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">var</span></span> s <span class="token operator">=</span> _serviceProvider<span class="token punctuation">.</span><span class="token function">CreateScope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    s<span class="token punctuation">.</span>ServiceProvider<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">GetService</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>ICustomService<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="參考資料："><a href="#參考資料：" class="headerlink" title="參考資料："></a>參考資料：</h3><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55708488/using-a-scoped-service-in-a-singleton-in-an-asp-net-core-app">https://stackoverflow.com/questions/55708488/using-a-scoped-service-in-a-singleton-in-an-asp-net-core-app</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.darkthread.net/blog/aspnetcore-use-scoped-in-singleton/">https://blog.darkthread.net/blog/aspnetcore-use-scoped-in-singleton/</a></p>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-06-16T16:00:00.000Z" itemprop="datePublished">2021-06-17</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Net-Core/" rel="tag">.Net Core</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dependency-Injection/" rel="tag">Dependency Injection</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-Entityframework-Identity"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/post/Entityframework-Identity.html">Entity Framework Identity 插入資料時自動獲得id</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="EntityFramework-Identity-插入資料時自動獲得id"><a href="#EntityFramework-Identity-插入資料時自動獲得id" class="headerlink" title="EntityFramework Identity 插入資料時自動獲得id"></a>EntityFramework Identity 插入資料時自動獲得id</h2><h3 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h3><ul>
+<li>Visual Studio 2019</li>
+<li>.Net Framework : 4.7.2</li>
+<li>Entity Framework : 6.4.4</li>
+<li>MySql.Data.EntityFramework: 8.0.18</li>
+<li>DB : MariadDB</li>
+</ul>
+<hr>
+<h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>在專案上有需要MariadDB的Table做資料維護，而Database是甲方爸爸開的，所以是必須以Database First的模式開發。</p>
+<p>甲方爸爸的欄位皆以int做主鍵id並以auto increment做欄位的自動增值。  </p>
+<p>資料維護需要以Ajax的方式在新增之後馬上顯示在前端的頁面中，<br>被新增的資料有可能在同頁面中馬上被刪除，因此需要新增資料後要馬上取得該欄位的id並回傳給前端。  </p>
+<p>此外在插入資料的時候，並沒有直接指定值，而是由資料庫自動產生對應的id，這就造成了無法知道生成的資料的id。</p>
+<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>Entity Framework會依照映射的模型有沒有identity欄位來決定新增後會不會自動取值回來。</p>
+<p>可以透過Entity Framework的Log的Action去指定輸出生成的SQL語法用的method來觀察轉換出來的SQL語法</p>
+<pre class="line-numbers language-C#" data-language="C#"><code class="language-C#">context.Database.Log &#x3D; Console.WriteLine;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在INSERT後端包含了SELECT的語法，並且由於對應的資料庫是MariadDB，所以輸出的SQL CODE中用到了MySQL的 last_insert_id()的函式，如果環境是對應到Sql Server，那生成的sql code會變成 scope_identity()。</p>
+<pre class="line-numbers language-SQL" data-language="SQL"><code class="language-SQL">SELECT
+&#96;sid&#96;
+FROM &#96;target_data&#96;
+WHERE  row_count() &gt; 0 AND &#96;sid&#96;&#x3D; last_insert_id()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="參考資料："><a href="#參考資料：" class="headerlink" title="參考資料："></a>參考資料：</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangzl1163/article/details/52037714">https://blog.csdn.net/wangzl1163/article/details/52037714</a><br><a target="_blank" rel="noopener" href="https://dotblogs.com.tw/yc421206/2020/06/27/ef_insert_after_query_identity_field">https://dotblogs.com.tw/yc421206/2020/06/27/ef_insert_after_query_identity_field</a></p>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-11-23T16:00:00.000Z" itemprop="datePublished">2020-11-24</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Net-Framewrok/" rel="tag">.Net Framewrok</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+
+  
+</div>
+
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99/">年度目標</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Core/" rel="tag">.Net Core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framewrok/" rel="tag">.Net Framewrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure-Function/" rel="tag">Azure Function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dependency-Injection/" rel="tag">Dependency Injection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Side-Project/" rel="tag">Side Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag">學習</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99/" rel="tag">年度目標</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7/" rel="tag">開發工具</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html">2022 年度目標 - 總結</a>
+          </li>
+        
+          <li>
+            <a href="/post/toolkit.html">開發工具清單</a>
+          </li>
+        
+          <li>
+            <a href="/post/azure-function-02.html">Azure Function .Net Core 開發紀錄（二）</a>
+          </li>
+        
+          <li>
+            <a href="/post/azure-function-01.html">Azure Function .Net Core 開發紀錄（一）</a>
+          </li>
+        
+          <li>
+            <a href="/post/dotnet-core-scoped-in-singleton.html">.Net Core Dependency Injection Scoped 注入到 Singleton</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            MurabitoB&#39;Blog &copy; 2022<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
