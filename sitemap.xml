@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://murabitob.github.io/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html</loc>
+    
+    <lastmod>2022-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/post/toolkit.html</loc>
+    
+    <lastmod>2022-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/post/Entityframework-Identity.html</loc>
+    
+    <lastmod>2022-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/post/dotnet-core-scoped-in-singleton.html</loc>
+    
+    <lastmod>2022-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/post/azure-function-02.html</loc>
+    
+    <lastmod>2022-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/post/azure-function-01.html</loc>
+    
+    <lastmod>2022-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/categories/index.html</loc>
+    
+    <lastmod>2022-08-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/about/index.html</loc>
+    
+    <lastmod>2022-08-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/tags/index.html</loc>
+    
+    <lastmod>2022-08-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>http://murabitob.github.io/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>http://murabitob.github.io/tags/Net-Framewrok/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/tags/Azure/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/tags/Azure-Function/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/tags/Net-Core/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/tags/Dependency-Injection/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/tags/%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/tags/%E5%AD%B8%E7%BF%92/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/tags/%E5%B7%A5%E4%BD%9C/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/tags/Side-Project-%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>http://murabitob.github.io/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://murabitob.github.io/categories/%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99/</loc>
+    <lastmod>2022-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+</urlset>
