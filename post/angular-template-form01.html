@@ -457,10 +457,8 @@ user <span class="token operator">=</span> <span class="token punctuation">&#123
 </ol>
 <p>patchValue 可以只傳需要修改的內容，而 setValue 會覆蓋掉整個內容。</p>
 <pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">this</span><span class="token punctuation">.</span>signupForm<span class="token punctuation">.</span>form<span class="token punctuation">.</span><span class="token function">patchValue</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-     userData<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-       username<span class="token operator">:</span> suggestedName
-     <span class="token punctuation">&#125;</span>
-   <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ username<span class="token operator">:</span> suggestedName
+   <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="單一元素的驗證檢查"><a href="#單一元素的驗證檢查" class="headerlink" title="單一元素的驗證檢查"></a>單一元素的驗證檢查</h2><p>如果要驗證單一的元素，並顯示一些錯誤訊息，特別是根據不同的狀況顯示不同的錯誤，可以透過存取 ngModel 的變數在 template 上，避免 Component 過度肥大。</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
@@ -475,6 +473,40 @@ user <span class="token operator">=</span> <span class="token punctuation">&#123
 	  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
+<h2 id="分組"><a href="#分組" class="headerlink" title="分組"></a>分組</h2><p>如果表單變得比較大可以透過 ngModelGroup 的 <code>Directive</code> 來結構化資料。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">(ngSubmit)</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>onSubmit()<span class="token punctuation">"</span></span> <span class="token attr-name">#form</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ngForm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> 
+<span class="token attr-name">ngModelGroup</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>userData<span class="token punctuation">"</span></span>
+<span class="token attr-name">#userData</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ngModelGroup<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Username<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
+	  <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span>
+	  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span>
+	  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form-control<span class="token punctuation">"</span></span>
+	  <span class="token attr-name">ngModel</span>
+	  <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span>
+	  <span class="token attr-name">required</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+	<span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn btn-default<span class="token punctuation">"</span></span>
+	<span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span>
+	<span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>suggestUserName()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Suggest an Username<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radi o<span class="token punctuation">"</span></span> <span class="token attr-name">*ngFor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>let gender of genders<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
+	  <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span>
+	  <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>gender<span class="token punctuation">"</span></span>
+	  <span class="token attr-name">ngModel</span>
+	  <span class="token attr-name">[value]</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>gender<span class="token punctuation">"</span></span>
+	  <span class="token attr-name">required</span><span class="token punctuation">></span></span>
+	&#123;&#123; gender &#125;&#125;
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span>
+  <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span>
+  <span class="token attr-name">[disabled]</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>!form.valid<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Submit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
         </div>
 
     </div>
@@ -492,9 +524,18 @@ user <span class="token operator">=</span> <span class="token punctuation">&#123
     
 <nav class="article-nav">
   
+    <a href="/post/angular-reactive-form.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          Angular Reactive Form
+        
+      </div>
+    </a>
+  
   
     <a href="/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">前の記事</div>
+      <div class="article-nav-caption">上一篇</div>
       <div class="article-nav-title">2022 年度目標 - 總結</div>
     </a>
   
@@ -502,7 +543,7 @@ user <span class="token operator">=</span> <span class="token punctuation">&#123
 
 
     <section class="share">
-        <div class="share-title">シェア</div>
+        <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
             href="https://twitter.com/share?text=Angular Template Form - MurabitoB'Blog&url=http%3A%2F%2Fmurabitob.github.io%2Fpost%2Fangular-template-form01.html">
             <ion-icon name="logo-twitter"></ion-icon>
@@ -584,6 +625,10 @@ user <span class="token operator">=</span> <span class="token punctuation">&#123
       <ul>
         
           <li>
+            <a href="/post/angular-reactive-form.html">Angular Reactive Form</a>
+          </li>
+        
+          <li>
             <a href="/post/angular-template-form01.html">Angular Template Form</a>
           </li>
         
@@ -597,10 +642,6 @@ user <span class="token operator">=</span> <span class="token punctuation">&#123
         
           <li>
             <a href="/post/azure-function-02.html">Azure Function .Net Core 開發紀錄（二）</a>
-          </li>
-        
-          <li>
-            <a href="/post/azure-function-01.html">Azure Function .Net Core 開發紀錄（一）</a>
           </li>
         
       </ul>
