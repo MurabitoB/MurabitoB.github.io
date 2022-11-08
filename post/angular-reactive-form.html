@@ -389,6 +389,9 @@
 <td>ng-invalid</td>
 </tr>
 </tbody></table>
+<h2 id="取得數值"><a href="#取得數值" class="headerlink" title="取得數值"></a>取得數值</h2><p>直接取用 formGroup.value 就可以了</p>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">this</span><span class="token punctuation">.</span>signupForm<span class="token punctuation">.</span>value<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="自訂驗證器"><a href="#自訂驗證器" class="headerlink" title="自訂驗證器"></a>自訂驗證器</h2><p>Reactive Form 的自訂驗證器只要寫一個 function，接收 FormControl 作為參數，根據結果回傳 `{property : boolean}</p>
 <p>範例</p>
 <pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token function">forbiddenNames</span><span class="token punctuation">(</span>control<span class="token operator">:</span> FormControl<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">[</span>s<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#123;</span>
