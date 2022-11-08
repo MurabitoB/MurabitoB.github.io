@@ -162,6 +162,67 @@
   
     
       <article
+id="post-angular-custom-pipe"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/post/angular-custom-pipe.html">Angular 自定義 Pipe</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>首先要實作 Custom Pipe 必須先繼承 <code>PipeTransform Interface</code>，並實作 <code>transform</code> function</p>
+<p>此外，還要定義 <code>@Pipe</code> 的 Decorator  </p>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Pipe</span></span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+	name<span class="token operator">:</span> <span class="token string">'custom'</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> CustomPipe <span class="token keyword">implements</span> <span class="token class-name">PipeTransform</span> <span class="token punctuation">&#123;</span>
+
+	<span class="token function">transform</span><span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> value<span class="token punctuation">.</span><span class="token function">subString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-11-08T05:25:44.000Z" itemprop="datePublished">2022-11-08</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular/" rel="tag">Angular</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
 id="post-angular-reactive-form"
 class="article article-type-post"
 >
@@ -691,6 +752,10 @@ class="article article-type-post"
       <ul>
         
           <li>
+            <a href="/post/angular-custom-pipe.html">Angular 自定義 Pipe</a>
+          </li>
+        
+          <li>
             <a href="/post/angular-reactive-form.html">Angular Reactive Form</a>
           </li>
         
@@ -704,10 +769,6 @@ class="article article-type-post"
         
           <li>
             <a href="/post/toolkit.html">開發工具清單</a>
-          </li>
-        
-          <li>
-            <a href="/post/azure-function-02.html">Azure Function .Net Core 開發紀錄（二）</a>
           </li>
         
       </ul>
