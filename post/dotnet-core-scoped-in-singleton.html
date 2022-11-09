@@ -37,7 +37,7 @@
 &lt;pre class=&#34;line-numbers language-csharp&#34; data-language=&#34;csharp&#34;&gt;&lt;code class=&#34;language-csharp&#34;&gt;System&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;AggregateException&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &#39;Some services are &lt;span class=&#34;token keyword&#34;&gt;not&lt;/span&gt; able to &lt;span class=&#34;token return-type class-name&#34;&gt;be&lt;/span&gt; constructed &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;Error &lt;span class=&#34;token keyword&#34;&gt;while&lt;/span&gt; validating the service descriptor &#39;ServiceType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&lt;/span&gt; Lifetime&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Singleton&lt;/span&gt; ImplementationType&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;MemoryUsageMonitor&#39;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; Cannot consume scoped service &#39;CRUDExample&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Models&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;JournalDbContext&#39; &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; singleton &#39;Microsoft&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Extensions&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;Hosting&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;IHostedService&#39;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&#39;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;原因是因為是在 Scoped 的生命週期結束後（一次 Request）， Singleton 依然會存在，這並不符合設計的規範．&lt;/p&gt;" />
-    <meta property="og:url" content="http://murabitob.github.io/post/dotnet-core-scoped-in-singleton.html" />
+    <meta property="og:url" content="https://murabitob.github.io/post/dotnet-core-scoped-in-singleton.html" />
     <meta property="og:site_name" content="" />
     <meta property="article:author" content="MurabitoB" />
     <meta property="article:publisher" content="" />
@@ -76,12 +76,12 @@
 &lt;p&gt;原因是因為是在 Scoped 的生命週期結束後（一次 Request）， Singleton 依然會存在，這並不符合設計的規範．&lt;/p&gt;",
             "author": { "@type": "Person", "name": "MurabitoB" },
             "@type": "BlogPosting",
-            "url": "http://murabitob.github.io/post/dotnet-core-scoped-in-singleton.html",
+            "url": "https://murabitob.github.io/post/dotnet-core-scoped-in-singleton.html",
             "publisher": {
             "@type": "Organization",
             "logo": {
                 "@type": "ImageObject",
-                "url": "http://murabitob.github.ioundefined"
+                "url": "https://murabitob.github.ioundefined"
             },
             "name": "MurabitoB"
             },
@@ -89,7 +89,7 @@
             "datePublished": "2021-06-16T16:00:00.000Z",
             "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "http://murabitob.github.io/post/dotnet-core-scoped-in-singleton.html"
+                "@id": "https://murabitob.github.io/post/dotnet-core-scoped-in-singleton.html"
             },
             "@context": "http://schema.org"
         }
@@ -310,7 +310,7 @@
 <nav class="article-nav">
   
     <a href="/post/azure-function-01.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-caption">次の記事</div>
       <div class="article-nav-title">
         
           Azure Function .Net Core 開發紀錄（一）
@@ -320,7 +320,7 @@
   
   
     <a href="/post/Entityframework-Identity.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-caption">前の記事</div>
       <div class="article-nav-title">Entity Framework Identity 插入資料時自動獲得id</div>
     </a>
   
@@ -328,17 +328,17 @@
 
 
     <section class="share">
-        <div class="share-title">分享</div>
+        <div class="share-title">シェア</div>
         <a class="share-item" target="_blank"
-            href="https://twitter.com/share?text=.Net Core Dependency Injection Scoped 注入到 Singleton - MurabitoB'Blog&url=http%3A%2F%2Fmurabitob.github.io%2Fpost%2Fdotnet-core-scoped-in-singleton.html">
+            href="https://twitter.com/share?text=.Net Core Dependency Injection Scoped 注入到 Singleton - MurabitoB'Blog&url=https%3A%2F%2Fmurabitob.github.io%2Fpost%2Fdotnet-core-scoped-in-singleton.html">
             <ion-icon name="logo-twitter"></ion-icon>
         </a>
         <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=.Net Core Dependency Injection Scoped 注入到 Singleton - MurabitoB'Blog&u=http%3A%2F%2Fmurabitob.github.io%2Fpost%2Fdotnet-core-scoped-in-singleton.html">
+            href="https://www.facebook.com/sharer.php?title=.Net Core Dependency Injection Scoped 注入到 Singleton - MurabitoB'Blog&u=https%3A%2F%2Fmurabitob.github.io%2Fpost%2Fdotnet-core-scoped-in-singleton.html">
             <ion-icon name="logo-facebook"></ion-icon>
         </a>
         <!-- <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=.Net Core Dependency Injection Scoped 注入到 Singleton - MurabitoB'Blog&url=http://murabitob.github.io/post/dotnet-core-scoped-in-singleton.html&pic=">
+            href="https://service.weibo.com/share/share.php?title=.Net Core Dependency Injection Scoped 注入到 Singleton - MurabitoB'Blog&url=https://murabitob.github.io/post/dotnet-core-scoped-in-singleton.html&pic=">
             <div class="n-icon n-icon-weibo"></div>
         </a> -->
     </section>
