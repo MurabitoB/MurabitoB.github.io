@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="cqX0KLojFnp_XLPXVqGxw_qUBybbxjMzqRSEKTh1NaI" />
+    <!-- If containe conver than set og:image -->
+    
+    
+    <title>Angular 初探 HttpInterceptor | MurabitoB&#39;Blog</title>
+
+    <meta name="description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="zh-TW" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "Angular 初探 HttpInterceptor | MurabitoB&#39;Blog"  />
+    <meta property="og:description" content= "後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發" />
+    <meta property="og:url" content="http://murabitob.github.io/post/angular-httpinterceptor.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="MurabitoB" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發" />
+    <meta name="twitter:title" content="Angular 初探 HttpInterceptor | MurabitoB&#39;Blog"/>
+    <meta name="twitter:description" content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發"/>
+    <script type="application/ld+json">
+        {
+            "description": "後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發",
+            "author": { "@type": "Person", "name": "MurabitoB" },
+            "@type": "BlogPosting",
+            "url": "http://murabitob.github.io/post/angular-httpinterceptor.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http://murabitob.github.ioundefined"
+            },
+            "name": "MurabitoB"
+            },
+            "headline": "Angular 初探 HttpInterceptor | MurabitoB&#39;Blog",
+            "datePublished": "2022-11-09T07:42:05.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "http://murabitob.github.io/post/angular-httpinterceptor.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            gitalk: {
+                enable: true,
+                clientID: "2dbcfa1a9b799109cc68",
+                clientSecret: "889d020c927ce43e47c00fcfe18d20ad13ead0e1",
+                repo: "MurabitoB.github.io",
+                owner: "MurabitoB",
+                admin: ["MurabitoB",],
+                distractionFreeMode: true  // Facebook-like distraction free mode
+            },
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = false
+
+    </script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>MurabitoB&#39;Blog</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">Home</a>
+                
+                <a href="/about">About</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://www.linkedin.com/in/murabitob/">
+        <ion-icon name="logo-linkedin"></ion-icon>
+    </a>
+
+    <a class="social" target="_blank" href="https://github.com/MurabitoB">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">Home</a>
+                    
+                    <a href="/about">About</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cla9209wd0000gnaq8q0f3w47" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      Angular 初探 HttpInterceptor
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2022-11-09T07:42:05.000Z" itemprop="datePublished">2022-11-09</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a>
+            </div>
+            
+
+            
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular/" rel="tag">Angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+            </div>
+            
+
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>雖然內建的 HttpClient 本身就可以針對 Http 請求進行設定 header, queryString, body 等參數上的設定。</p>
+<p>但是，如果今天的情境是請求要呼叫的 API 需要帶上一些 token 放在 header 或者其他地方的話，在每隻都要主動填入的話會造成一直在寫重複的 Code。</p>
+<p>如果今天的情境是在每次呼叫特定的 API 的話都要都要帶上特定的參數的話，這時候就很適合用 <code>HttpInterceptor</code> 來進行處理。</p>
+<p><code>HttpInterceptor</code> 可以針對每次每次的 <code>Request</code> <code>Response</code> 進行加工，使處理的邏輯能夠集中在一個地方，概念上有點像後端 framework 的 <code>Middleware</code> 。</p>
+<h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><p>官網的介面定義如下</p>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">interface</span> <span class="token class-name">HttpInterceptor</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">intercept</span><span class="token punctuation">(</span>req<span class="token operator">:</span> HttpRequest<span class="token operator">&lt;</span><span class="token builtin">any</span><span class="token operator">></span><span class="token punctuation">,</span> next<span class="token operator">:</span> HttpHandler<span class="token punctuation">)</span><span class="token operator">:</span> Observable<span class="token operator">&lt;</span>HttpEvent<span class="token operator">&lt;</span><span class="token builtin">any</span><span class="token operator">>></span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>HttpInterceptor 本身是個 Service ，可以透過 <code>intercept</code> 這個函數對請求進行處理。</p>
+<p>透過以下方式複製一份新的 request 並添加 Authorization 的 Header</p>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Injectable</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AuthInterceptor</span> <span class="token keyword">implements</span> <span class="token class-name">HttpInterceptor</span> <span class="token punctuation">&#123;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+    <span class="token keyword">private</span> authService<span class="token operator">:</span> AuthService
+  <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token function">intercept</span><span class="token punctuation">(</span>req<span class="token operator">:</span> HttpRequest<span class="token operator">&lt;</span><span class="token builtin">any</span><span class="token operator">></span><span class="token punctuation">,</span> next<span class="token operator">:</span> HttpHandler<span class="token punctuation">)</span><span class="token operator">:</span> Observable<span class="token operator">&lt;</span>HttpEvent<span class="token operator">&lt;</span><span class="token builtin">any</span><span class="token operator">>></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> loginInfo <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>authService<span class="token punctuation">.</span>loginInfo$<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>loginInfo<span class="token punctuation">)</span>
+        req <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+            headers<span class="token operator">:</span> req<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'Authorization'</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Bearer </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>loginInfo<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">return</span> next<span class="token punctuation">.</span><span class="token function">handle</span><span class="token punctuation">(</span>req<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接著，將其放在 AppModule，要注意 <code>multi</code> 要設成 true</p>
+<p>理由可以參照這篇： <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/51141132/what-does-the-multi-true-attribute-of-http-interceptors-mean">angular - what does the multi: true attribute of HTTP_INTERCEPTORS mean? - Stack Overflow</a></p>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">NgModule</span></span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  providers<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span>
+      provide<span class="token operator">:</span> <span class="token constant">HTTP_INTERCEPTORS</span><span class="token punctuation">,</span>
+      useClass<span class="token operator">:</span> AuthInterceptor<span class="token punctuation">,</span>
+      multi<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>此外 HttpInterceptor 可以同時引用多組</p>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">NgModule</span></span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  providers<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span>
+      provide<span class="token operator">:</span> <span class="token constant">HTTP_INTERCEPTORS</span><span class="token punctuation">,</span>
+      useClass<span class="token operator">:</span> AInterceptor<span class="token punctuation">,</span>
+      multi<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+	<span class="token punctuation">&#123;</span>
+      provide<span class="token operator">:</span> <span class="token constant">HTTP_INTERCEPTORS</span><span class="token punctuation">,</span>
+      useClass<span class="token operator">:</span> BInterceptor<span class="token punctuation">,</span>
+      multi<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在下列的情境下在請求發送後會依照由上到下的順序經過 <code>A =&gt; B</code></p>
+<h2 id="處理-Response"><a href="#處理-Response" class="headerlink" title="處理 Response"></a>處理 Response</h2><p>HttpInterceptor 除了處理 Request 之外，也可以在原本的 <code>handle</code> 使用 <code>pipe</code>  來處理 Response，在實務上可以用來處理一些請求回傳的錯誤，例如得到  <code>401 unauthorized</code>  後跳回登入頁。</p>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">Injectable</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AuthInterceptor</span> <span class="token keyword">implements</span> <span class="token class-name">HttpInterceptor</span> <span class="token punctuation">&#123;</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+    <span class="token keyword">private</span> authService<span class="token operator">:</span> AuthService
+  <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token function">intercept</span><span class="token punctuation">(</span>req<span class="token operator">:</span> HttpRequest<span class="token operator">&lt;</span><span class="token builtin">any</span><span class="token operator">></span><span class="token punctuation">,</span> next<span class="token operator">:</span> HttpHandler<span class="token punctuation">)</span><span class="token operator">:</span> Observable<span class="token operator">&lt;</span>HttpEvent<span class="token operator">&lt;</span><span class="token builtin">any</span><span class="token operator">>></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> loginInfo <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>authService<span class="token punctuation">.</span>loginInfo$<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>loginInfo<span class="token punctuation">)</span>
+        req <span class="token operator">=</span> req<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+            headers<span class="token operator">:</span> req<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'Authorization'</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Bearer </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>loginInfo<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+       <span class="token keyword">return</span> next<span class="token punctuation">.</span><span class="token function">handle</span><span class="token punctuation">(</span>req<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+      <span class="token function">catchError</span><span class="token punctuation">(</span>x <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token keyword">instanceof</span> <span class="token class-name">HttpErrorResponse</span> <span class="token operator">&amp;&amp;</span> x<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">401</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>authService<span class="token punctuation">.</span><span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token function">throwError</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+  
+    <a href="/post/angular-custom-pipe.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">precedente</div>
+      <div class="article-nav-title">Angular 自定義 Pipe</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">share</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=Angular 初探 HttpInterceptor - MurabitoB'Blog&url=http%3A%2F%2Fmurabitob.github.io%2Fpost%2Fangular-httpinterceptor.html">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=Angular 初探 HttpInterceptor - MurabitoB'Blog&u=http%3A%2F%2Fmurabitob.github.io%2Fpost%2Fangular-httpinterceptor.html">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=Angular 初探 HttpInterceptor - MurabitoB'Blog&url=http://murabitob.github.io/post/angular-httpinterceptor.html&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+<section class="comments">
+    <div id="gitalk-container"></div>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99/">年度目標</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Core/" rel="tag">.Net Core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framewrok/" rel="tag">.Net Framewrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/" rel="tag">Angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure-Function/" rel="tag">Azure Function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dependency-Injection/" rel="tag">Dependency Injection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Side-Project/" rel="tag">Side Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag">學習</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7/" rel="tag">開發工具</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/post/angular-httpinterceptor.html">Angular 初探 HttpInterceptor</a>
+          </li>
+        
+          <li>
+            <a href="/post/angular-custom-pipe.html">Angular 自定義 Pipe</a>
+          </li>
+        
+          <li>
+            <a href="/post/angular-reactive-form.html">Angular Reactive Form</a>
+          </li>
+        
+          <li>
+            <a href="/post/angular-template-form01.html">Angular Template Form</a>
+          </li>
+        
+          <li>
+            <a href="/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html">2022 年度目標 - 總結</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            MurabitoB&#39;Blog &copy; 2022<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+
+
+
+<script src="/dist/build.js?1654266144177.js"></script>
+
+
+<script src="/dist/custom.js?1654266144177.js"></script>
+
+
+
+
+
+<!-- Google Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SXXLX5MR04"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SXXLX5MR04');
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
