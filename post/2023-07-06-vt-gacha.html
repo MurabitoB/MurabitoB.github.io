@@ -7,6 +7,8 @@
     <meta name="google-site-verification" content="cqX0KLojFnp_XLPXVqGxw_qUBybbxjMzqRSEKTh1NaI" />
     <!-- If containe conver than set og:image -->
     
+    <meta name="og:image" content="https://i.imgur.com/OpmuH8U.png">
+    
     
     <title>Squarelive 轉蛋遊戲製作心得 | MurabitoB&#39;Blog</title>
 
@@ -219,10 +221,9 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="https://i.imgur.com/OpmuH8U.png"></p>
-<p>在 2023 年的6月，我製作了一款可以把觀眾的 SuperChat、綠界贊助轉換成實況主抽卡的石頭的小遊戲，作為 SquareLive 旗下的 VTuber 祈菈‧貝希毛絲 的生日節目的一環</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 2023 年的6月，我製作了一款可以把觀眾的 SuperChat、綠界贊助轉換成實況主抽卡的石頭的小遊戲，作為 SquareLive 旗下的 VTuber 祈菈‧貝希毛絲 的生日節目的一環</p>
 <span id="more"></span>
-
+<p><img src="https://i.imgur.com/OpmuH8U.png"></p>
 <h2 id="企劃"><a href="#企劃" class="headerlink" title="企劃"></a><strong>企劃</strong></h2><p>企劃前期有討論要做完整的遊戲體驗，例如串 SuperChat、綠界的贊助作為武器攻擊力，然後關卡會出現 Squarelive 家 Staff 作為關卡 Boss 的遊戲，不過考量到規模太大，所以最後決定做成抽卡遊戲</p>
 <p><img src="https://i.imgur.com/emQ2k8e.png"></p>
 <blockquote>
@@ -309,7 +310,7 @@
 <p>然後，為了實現後台操作機率，我們還要有一個伺服器來負責計算抽卡結果並回傳資料，而且系統的即時通知也需要透過伺服器來傳遞過來</p>
 <p>為了架設這些東西我需要架設伺服器，並且寫一個後端程式來達成上述的功能…嗎？</p>
 <p><strong>並不用！</strong></p>
-<p>為了實現客家精神，我決定 0 成本實現看起來好像有一個後端，但實際上並沒有</p>
+<p>為了實現客家精神，我決定 0 成本達成以上功能</p>
 <p>整體架構如下</p>
 <ul>
 <li>前端(Unity)自行計算抽卡結果</li>
