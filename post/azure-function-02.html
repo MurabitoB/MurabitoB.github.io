@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="google-site-verification" content="cqX0KLojFnp_XLPXVqGxw_qUBybbxjMzqRSEKTh1NaI" />
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta
+      name="google-site-verification"
+      content="cqX0KLojFnp_XLPXVqGxw_qUBybbxjMzqRSEKTh1NaI"
+    />
     <!-- If containe conver than set og:image -->
-    
-    
+     
     <title>Azure Function .Net Core 開發紀錄（二） | MurabitoB&#39;Blog</title>
 
-    <meta name="description" content="&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 .Net Core API 專案中，我們習慣透過 appsetting.json 來取得 config 的設定值，在 Azure function 中，需要透過專案根目錄裡面的 local.setting.json 的 Values 欄位來設定。&lt;/p&gt;
+    <meta
+      name="description"
+      content="&lt;h1 id=&#34;Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34;&gt;&lt;a href=&#34;#Azure-Function-Net-Core-開發紀錄（二）-如何取得-config-變數&#34; class=&#34;headerlink&#34; title=&#34;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&#34;&gt;&lt;/a&gt;Azure Function .Net Core 開發紀錄（二） 如何取得 config 變數&lt;/h1&gt;&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 .Net Core API 專案中，我們習慣透過 appsetting.json 來取得 config 的設定值，在 Azure function 中，需要透過專案根目錄裡面的 local.setting.json 的 Values 欄位來設定。&lt;/p&gt;
 &lt;pre class=&#34;line-numbers language-json&#34; data-language=&#34;json&#34;&gt;&lt;code class=&#34;language-json&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
   &lt;span class=&#34;token property&#34;&gt;&#34;IsEncrypted&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token boolean&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
   &lt;span class=&#34;token property&#34;&gt;&#34;Values&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
@@ -18,8 +24,9 @@
     &lt;span class=&#34;token property&#34;&gt;&#34;FUNCTIONS_WORKER_RUNTIME&#34;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;dotnet&#34;&lt;/span&gt;
     &lt;span class=&#34;token comment&#34;&gt;// 從下面開始添加自己的設定&lt;/span&gt;
   &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;
-&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;">
-    <meta name="keywords" content="">
+&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;"
+    />
+    <meta name="keywords" content="" />
 
     
 
@@ -76,7 +83,7 @@
             "@type": "Organization",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://murabitob.github.ioundefined"
+                "url": "https://murabitob.github.io/images/thumbnail.jpg"
             },
             "name": "MurabitoB"
             },
@@ -91,63 +98,52 @@
     </script>
 
 
-
-
-    
-
-    
-
-    
-
-    
-
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
-    
-
-    
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    
-
-    
-
-    
-<link rel="stylesheet" href="/dist/build.css?v=1690284954039.css">
-
-
-    
-<link rel="stylesheet" href="/dist/custom.css?v=1690284954039.css">
+     
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>"
+    />
+     
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+      
+<link rel="stylesheet" href="/dist/build.css?v=1690288261467.css">
+ 
+<link rel="stylesheet" href="/dist/custom.css?v=1690288261467.css">
 
 
     <script>
-        window.isPost = true
-        window.aomori = {
-            
-            gitalk: {
-                enable: true,
-                clientID: "2dbcfa1a9b799109cc68",
-                clientSecret: "889d020c927ce43e47c00fcfe18d20ad13ead0e1",
-                repo: "MurabitoB.github.io",
-                owner: "MurabitoB",
-                admin: ["MurabitoB",],
-                distractionFreeMode: true  // Facebook-like distraction free mode
-            },
-            
-            
-            
-        }
-        window.aomori_logo_typed_animated = true
-        window.aomori_search_algolia = false
-
+      window.isPost = true
+      window.aomori = {
+          
+          gitalk: {
+              enable: true,
+              clientID: "2dbcfa1a9b799109cc68",
+              clientSecret: "889d020c927ce43e47c00fcfe18d20ad13ead0e1",
+              repo: "MurabitoB.github.io",
+              owner: "MurabitoB",
+              admin: ["MurabitoB",],
+              distractionFreeMode: true  // Facebook-like distraction free mode
+          },
+          
+          
+          
+      }
+      window.aomori_logo_typed_animated = true
+      window.aomori_search_algolia = false
     </script>
+  <meta name="generator" content="Hexo 5.4.2"></head>
+</html>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional" rel="stylesheet">
     <div class="container">
     <header class="header">
         <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="/images/thumbnail.jpg" alt="MurabitoB">
+            </div>
             
             <div class="header-type-inner">
                 
@@ -250,6 +246,10 @@
             </div>
             
 
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
             
 
         </div>
@@ -388,6 +388,8 @@
 
 
 
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 </div>
                 </section>
             </section>
@@ -501,10 +503,10 @@
 
 
 
-<script src="/dist/build.js?1690284954039.js"></script>
+<script src="/dist/build.js?1690288261467.js"></script>
 
 
-<script src="/dist/custom.js?1690284954039.js"></script>
+<script src="/dist/custom.js?1690288261467.js"></script>
 
 
 

@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="google-site-verification" content="cqX0KLojFnp_XLPXVqGxw_qUBybbxjMzqRSEKTh1NaI" />
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta
+      name="google-site-verification"
+      content="cqX0KLojFnp_XLPXVqGxw_qUBybbxjMzqRSEKTh1NaI"
+    />
     <!-- If containe conver than set og:image -->
-    
-    
+     
     <title>Angular 自定義 Pipe | MurabitoB&#39;Blog</title>
 
-    <meta name="description" content="&lt;p&gt;首先要實作 Custom Pipe 必須先繼承 &lt;code&gt;PipeTransform Interface&lt;/code&gt;，並實作 &lt;code&gt;transform&lt;/code&gt; function&lt;/p&gt;
+    <meta
+      name="description"
+      content="&lt;p&gt;首先要實作 Custom Pipe 必須先繼承 &lt;code&gt;PipeTransform Interface&lt;/code&gt;，並實作 &lt;code&gt;transform&lt;/code&gt; function&lt;/p&gt;
 &lt;p&gt;此外，還要定義 &lt;code&gt;@Pipe&lt;/code&gt; 的 Decorator  &lt;/p&gt;
 &lt;pre class=&#34;line-numbers language-typescript&#34; data-language=&#34;typescript&#34;&gt;&lt;code class=&#34;language-typescript&#34;&gt;&lt;span class=&#34;token decorator&#34;&gt;&lt;span class=&#34;token at operator&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;Pipe&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
 	name&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#39;custom&#39;&lt;/span&gt;
@@ -20,8 +26,9 @@
 	&lt;span class=&#34;token function&#34;&gt;transform&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;value&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token builtin&#34;&gt;any&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;
 		&lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; value&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;subString&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
 	&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;
-&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;">
-    <meta name="keywords" content="">
+&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&#34;true&#34; class=&#34;line-numbers-rows&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;"
+    />
+    <meta name="keywords" content="" />
 
     
 
@@ -86,7 +93,7 @@
             "@type": "Organization",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://murabitob.github.ioundefined"
+                "url": "https://murabitob.github.io/images/thumbnail.jpg"
             },
             "name": "MurabitoB"
             },
@@ -101,63 +108,52 @@
     </script>
 
 
-
-
-    
-
-    
-
-    
-
-    
-
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
-    
-
-    
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    
-
-    
-
-    
-<link rel="stylesheet" href="/dist/build.css?v=1690284954039.css">
-
-
-    
-<link rel="stylesheet" href="/dist/custom.css?v=1690284954039.css">
+     
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>"
+    />
+     
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+      
+<link rel="stylesheet" href="/dist/build.css?v=1690288261467.css">
+ 
+<link rel="stylesheet" href="/dist/custom.css?v=1690288261467.css">
 
 
     <script>
-        window.isPost = true
-        window.aomori = {
-            
-            gitalk: {
-                enable: true,
-                clientID: "2dbcfa1a9b799109cc68",
-                clientSecret: "889d020c927ce43e47c00fcfe18d20ad13ead0e1",
-                repo: "MurabitoB.github.io",
-                owner: "MurabitoB",
-                admin: ["MurabitoB",],
-                distractionFreeMode: true  // Facebook-like distraction free mode
-            },
-            
-            
-            
-        }
-        window.aomori_logo_typed_animated = true
-        window.aomori_search_algolia = false
-
+      window.isPost = true
+      window.aomori = {
+          
+          gitalk: {
+              enable: true,
+              clientID: "2dbcfa1a9b799109cc68",
+              clientSecret: "889d020c927ce43e47c00fcfe18d20ad13ead0e1",
+              repo: "MurabitoB.github.io",
+              owner: "MurabitoB",
+              admin: ["MurabitoB",],
+              distractionFreeMode: true  // Facebook-like distraction free mode
+          },
+          
+          
+          
+      }
+      window.aomori_logo_typed_animated = true
+      window.aomori_search_algolia = false
     </script>
+  <meta name="generator" content="Hexo 5.4.2"></head>
+</html>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional" rel="stylesheet">
     <div class="container">
     <header class="header">
         <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="/images/thumbnail.jpg" alt="MurabitoB">
+            </div>
             
             <div class="header-type-inner">
                 
@@ -260,6 +256,10 @@
             </div>
             
 
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
             
 
         </div>
@@ -396,6 +396,8 @@
 
 
 
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 </div>
                 </section>
             </section>
@@ -509,10 +511,10 @@
 
 
 
-<script src="/dist/build.js?1690284954039.js"></script>
+<script src="/dist/build.js?1690288261467.js"></script>
 
 
-<script src="/dist/custom.js?1690284954039.js"></script>
+<script src="/dist/custom.js?1690288261467.js"></script>
 
 
 
