@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta
+      name="google-site-verification"
+      content="cqX0KLojFnp_XLPXVqGxw_qUBybbxjMzqRSEKTh1NaI"
+    />
+    <!-- If containe conver than set og:image -->
+     
+    <title>2024 CKAD 心得 | MurabitoB&#39;Blog</title>
+
+    <meta
+      name="description"
+      content="&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;CKAD 是由 Linux Foundation 與 Cloud Native Computing Foundation (CNCF) 合作的認證考試&lt;/p&gt;
+&lt;p&gt;主要是針對 Kubernetes 的應用開發者，考一些 Pod / Deployment / Service / ConfigMap / Secret / Network Policy / Storage 等等的操作。&lt;/p&gt;
+&lt;p&gt;早在 &lt;a href=&#34;https://murabitob.github.io/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html&#34;&gt;2022&lt;/a&gt; 年的時候，就已經許下了一個目標是要在 2023 年能過把他考過，但是因為拖延症發作加上換新工作適應職場，所以遲遲沒有定下心來好好準備去考。&lt;/p&gt;"
+    />
+    <meta name="keywords" content="" />
+
+    
+
+    <meta property="og:locale" content="zh-TW" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "2024 CKAD 心得 | MurabitoB&#39;Blog"  />
+    <meta property="og:description" content= "&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;CKAD 是由 Linux Foundation 與 Cloud Native Computing Foundation (CNCF) 合作的認證考試&lt;/p&gt;
+&lt;p&gt;主要是針對 Kubernetes 的應用開發者，考一些 Pod / Deployment / Service / ConfigMap / Secret / Network Policy / Storage 等等的操作。&lt;/p&gt;
+&lt;p&gt;早在 &lt;a href=&#34;https://murabitob.github.io/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html&#34;&gt;2022&lt;/a&gt; 年的時候，就已經許下了一個目標是要在 2023 年能過把他考過，但是因為拖延症發作加上換新工作適應職場，所以遲遲沒有定下心來好好準備去考。&lt;/p&gt;" />
+    <meta property="og:url" content="https://murabitob.github.io/post/ckad.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="MurabitoB" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;CKAD 是由 Linux Foundation 與 Cloud Native Computing Foundation (CNCF) 合作的認證考試&lt;/p&gt;
+&lt;p&gt;主要是針對 Kubernetes 的應用開發者，考一些 Pod / Deployment / Service / ConfigMap / Secret / Network Policy / Storage 等等的操作。&lt;/p&gt;
+&lt;p&gt;早在 &lt;a href=&#34;https://murabitob.github.io/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html&#34;&gt;2022&lt;/a&gt; 年的時候，就已經許下了一個目標是要在 2023 年能過把他考過，但是因為拖延症發作加上換新工作適應職場，所以遲遲沒有定下心來好好準備去考。&lt;/p&gt;" />
+    <meta name="twitter:title" content="2024 CKAD 心得 | MurabitoB&#39;Blog"/>
+    <meta name="twitter:description" content="&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;CKAD 是由 Linux Foundation 與 Cloud Native Computing Foundation (CNCF) 合作的認證考試&lt;/p&gt;
+&lt;p&gt;主要是針對 Kubernetes 的應用開發者，考一些 Pod / Deployment / Service / ConfigMap / Secret / Network Policy / Storage 等等的操作。&lt;/p&gt;
+&lt;p&gt;早在 &lt;a href=&#34;https://murabitob.github.io/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html&#34;&gt;2022&lt;/a&gt; 年的時候，就已經許下了一個目標是要在 2023 年能過把他考過，但是因為拖延症發作加上換新工作適應職場，所以遲遲沒有定下心來好好準備去考。&lt;/p&gt;"/>
+    <script type="application/ld+json">
+        {
+            "description": "&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;CKAD 是由 Linux Foundation 與 Cloud Native Computing Foundation (CNCF) 合作的認證考試&lt;/p&gt;
+&lt;p&gt;主要是針對 Kubernetes 的應用開發者，考一些 Pod / Deployment / Service / ConfigMap / Secret / Network Policy / Storage 等等的操作。&lt;/p&gt;
+&lt;p&gt;早在 &lt;a href=&#34;https://murabitob.github.io/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html&#34;&gt;2022&lt;/a&gt; 年的時候，就已經許下了一個目標是要在 2023 年能過把他考過，但是因為拖延症發作加上換新工作適應職場，所以遲遲沒有定下心來好好準備去考。&lt;/p&gt;",
+            "author": { "@type": "Person", "name": "MurabitoB" },
+            "@type": "BlogPosting",
+            "url": "https://murabitob.github.io/post/ckad.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://murabitob.github.io/images/thumbnail.jpg"
+            },
+            "name": "MurabitoB"
+            },
+            "headline": "2024 CKAD 心得 | MurabitoB&#39;Blog",
+            "datePublished": "2024-07-06T08:00:00.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://murabitob.github.io/post/ckad.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+    
+    <link rel="icon" href="/images/thumbnail.jpg" />
+      
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+      
+<link rel="stylesheet" href="/dist/build.css?v=1690288261467.css">
+ 
+<link rel="stylesheet" href="/dist/custom.css?v=1690288261467.css">
+
+
+    <script>
+      window.isPost = true
+      window.aomori = {
+          
+          gitalk: {
+              enable: true,
+              clientID: "2dbcfa1a9b799109cc68",
+              clientSecret: "889d020c927ce43e47c00fcfe18d20ad13ead0e1",
+              repo: "MurabitoB.github.io",
+              owner: "MurabitoB",
+              admin: ["MurabitoB",],
+              distractionFreeMode: true  // Facebook-like distraction free mode
+          },
+          
+          
+          
+      }
+      window.aomori_logo_typed_animated = true
+      window.aomori_search_algolia = false
+    </script>
+  <meta name="generator" content="Hexo 5.4.2"></head>
+</html>
+
+
+<body>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional" rel="stylesheet">
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="/images/thumbnail.jpg" alt="MurabitoB">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>MurabitoB&#39;Blog</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">Home</a>
+                
+                <a href="/about">About</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/MurabitoB">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">Home</a>
+                    
+                    <a href="/about">About</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cly9txx7p0000j6asalaa1pla" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      2024 CKAD 心得
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2024-07-06T08:00:00.000Z" itemprop="datePublished">2024-07-06</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/%E8%AA%8D%E8%AD%89/">認證</a>
+            </div>
+            
+
+            
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li></ul>
+            </div>
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>CKAD 是由 Linux Foundation 與 Cloud Native Computing Foundation (CNCF) 合作的認證考試</p>
+<p>主要是針對 Kubernetes 的應用開發者，考一些 Pod / Deployment / Service / ConfigMap / Secret / Network Policy / Storage 等等的操作。</p>
+<p>早在 <a href="https://murabitob.github.io/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html">2022</a> 年的時候，就已經許下了一個目標是要在 2023 年能過把他考過，但是因為拖延症發作加上換新工作適應職場，所以遲遲沒有定下心來好好準備去考。</p>
+<span id="more"></span>
+
+<p>剛好在去年(2023) Cyber Monday 的時候，正好同事分享有特價(50% off)，就直接刷下，先花了錢下去相信自己肯定會用心準備。</p>
+<p>廢話不多說，先上證書<br><img src="./ckad/ckad.png"></p>
+<p>分數 91 / 100</p>
+<h2 id="如何準備？"><a href="#如何準備？" class="headerlink" title="如何準備？"></a>如何準備？</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.udemy.com/course/certified-kubernetes-application-developer/?couponCode=KEEPLEARNING">Kubernetes Certified Application Developer (CKAD) with Tests</a> Udemy 課程</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/dgkanatsios/CKAD-exercises">CKAD-exercises</a> Github 公開練習題</li>
+<li><a target="_blank" rel="noopener" href="https://killer.sh/">Kill Shell</a> 官方模擬考</li>
+</ol>
+<p>Udemy 的課程會提供 Lab 環境，透過 web terminal 的方式去操作 cluster，練習起來會很方便，並且可以反覆練習不限次數，對於考試會很有幫助。</p>
+<p>Github 的公開練習題，難度會稍微高一點，要自己準備環境，推薦架個 <a target="_blank" rel="noopener" href="https://minikube.sigs.k8s.io/docs/start/?arch=/macos/x86-64/stable/binary+download">minikube</a><br>來搭配練習，強烈推薦做一遍，有一些操作在 Udemy 的課程沒有，但是本人在正式的考試中有遇到。</p>
+<p>Kill Shell 是官方模擬考，只要報名考試就會贈送，有 2 x 36 小時的時間可以反覆練習，跟正式環境很接近，會給你一台 VNC 裡面是 Ubuntu + Firefox，要試著練習文件也在裡面查，題目約 2x 題，比正式環境多了幾題，時間壓力會大上不少，能夠在這裡考過的話，正式考試應該不會有問題。</p>
+<p>Vim：我到現在還是操作起來很卡，但是知道怎麼編輯對於考試來說就很夠了，大部分情況都是要複製貼上一些設定檔，會基本的多行 縮排 / 刪除 / 插入 就很夠用。</p>
+<h2 id="2024-年的考試環境"><a href="#2024-年的考試環境" class="headerlink" title="2024 年的考試環境"></a>2024 年的考試環境</h2><p>台灣沒有合作的考場，所以只能自己找地方考，我自己是選擇在家裡，考場對網路環境也有很嚴格的要求，考試準備的時候他也會要你登入一個網頁去測目前的環境是否有符合要求。</p>
+<ol>
+<li>房間要整潔，牆壁上不能貼東西</li>
+<li>一個螢幕，看前人的心得，以前是可以有延伸螢幕，現在官網有明確說明只能一個螢幕</li>
+<li>一個鏡頭，考試期間要讓考官全程盯著你的臉ㄊ</li>
+<li>一個麥克風，且不能戴耳機</li>
+</ol>
+<p>為了避嫌，我把房間的 螢幕支架 / 桌機 / 電視 都拆掉丟到別的房間，只留下桌子 / 床 / 書櫃</p>
+<h2 id="考試當天"><a href="#考試當天" class="headerlink" title="考試當天"></a>考試當天</h2><p>由於在考試報名的時候可以一併把身分證件(護照)上傳，所以考試的時候並沒有再跟我要求展示護照</p>
+<p>在考試開始前的 30 分鐘，他會提供你一個專門的瀏覽器，裡面會包含了 VNC 的連線資訊，只要照著他的指示操作就好，照著指示操作就可以排隊等考官。</p>
+<p>考官會用文字訊息跟你說明考試規則，並且會要求你展示房間，確認環境符合規定，之後就會開始考試。</p>
+<p>具體會包含：</p>
+<ol>
+<li>展示房間 + 天花板 + 地板</li>
+<li>展示桌面</li>
+<li>檢查耳朵是否有戴耳機</li>
+<li>展示雙手，確認沒有配備任何穿戴式裝置</li>
+<li>展示你的杯子，如果有的話杯子必須是透明水杯</li>
+<li>把滑鼠鍵盤 舉起，確認下面沒有東西</li>
+<li>展示你的手機 (我直接跟考官說我手機丟別的房間)</li>
+</ol>
+<p>考試進行中，如果離的鏡頭太近，考官會提醒你臉要完全在畫面中間</p>
+<p>我自己是 2021 macbook pro 14，疊一層 VNC 去操作很容易下意識往前，條件允許的話建議用外接螢幕 + 外接鏡頭，這樣操作起來會比較輕鬆。</p>
+<p>如果前面的練習都有做過，應該就不會有太大的問題，我做完第一輪的時候，還有 30 分鐘左右的時間，用剩下的時間把題目檢查兩遍，剩五分鐘左右就直接提前交卷了。</p>
+<h2 id="考試技巧"><a href="#考試技巧" class="headerlink" title="考試技巧"></a>考試技巧</h2><p>減少輸入字數：透過 <code>alias k=kubectl</code> 來減少輸入字數，這在考試環境會是預設就有的，不用特別設定</p>
+<p>快速索引文件：題目會提供關聯文件連結，點擊連結後， VNC 內部的 firefox 會自動打開關聯文件，我自己對文件很熟悉，建議再搭配 <code>ctrl + f</code> 來搜尋關鍵字，以我的個人來說，我會推薦搜尋 <code>kind: </code> 這樣可以直接找到要複製的 yaml 文件。</p>
+<p>許多文章會推薦調整 <code>.vimrc</code> 來保證縮排是兩個空白，但是 2024 的環境這個設定是預設值，所以不用特別調整。</p>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>CKAD 的考試範圍所涵蓋的內容對於自身工作來說我覺得是十分受用</p>
+<p>雖然原本工作就有在使用 Kubernetes，但是許多 Kubernetes Resource 都是在準備 CKAD 的過程中才第一次接觸到，對於原本習以為常的資源也有了解到更多的操作方式。</p>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+  
+    <a href="/post/2023-07-06-vt-gacha.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">Squarelive 轉蛋遊戲製作心得</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=2024 CKAD 心得 - MurabitoB'Blog&url=https%3A%2F%2Fmurabitob.github.io%2Fpost%2Fckad.html">
+            <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=2024 CKAD 心得 - MurabitoB'Blog&u=https%3A%2F%2Fmurabitob.github.io%2Fpost%2Fckad.html">
+            <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=2024 CKAD 心得 - MurabitoB'Blog&url=https://murabitob.github.io/post/ckad.html&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+<section class="comments">
+    <div id="gitalk-container"></div>
+</section>
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99/">年度目標</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AA%8D%E8%AD%89/">認證</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Core/" rel="tag">.Net Core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framewrok/" rel="tag">.Net Framewrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/" rel="tag">Angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure-Function/" rel="tag">Azure Function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dependency-Injection/" rel="tag">Dependency Injection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Side-Project/" rel="tag">Side Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag">學習</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7/" rel="tag">開發工具</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/post/ckad.html">2024 CKAD 心得</a>
+          </li>
+        
+          <li>
+            <a href="/post/2023-07-06-vt-gacha.html">Squarelive 轉蛋遊戲製作心得</a>
+          </li>
+        
+          <li>
+            <a href="/post/angular-httpinterceptor.html">Angular 初探 HttpInterceptor</a>
+          </li>
+        
+          <li>
+            <a href="/post/angular-custom-pipe.html">Angular 自定義 Pipe</a>
+          </li>
+        
+          <li>
+            <a href="/post/angular-reactive-form.html">Angular Reactive Form</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            MurabitoB&#39;Blog &copy; 2024<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+
+
+
+<script src="/dist/build.js?1690288261467.js"></script>
+
+
+<script src="/dist/custom.js?1690288261467.js"></script>
+
+
+
+
+
+<!-- Google Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SXXLX5MR04"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SXXLX5MR04');
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

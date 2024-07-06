@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta
+      name="google-site-verification"
+      content="cqX0KLojFnp_XLPXVqGxw_qUBybbxjMzqRSEKTh1NaI"
+    />
+    <!-- If containe conver than set og:image -->
+     
+    <title>MurabitoB&#39;Blog</title>
+
+    <meta
+      name="description"
+      content="後端軟體工程師&lt;br&gt;業餘Unity工程師&lt;br&gt;獨立遊戲開發"
+    />
+    <meta name="keywords" content="" />
+
+    
+
+
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:locale" content="zh-TW" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://murabitob.github.io/page/2/index.html" />
+    <meta property="og:site_name" content="MurabitoB" />
+    <meta property="article:publisher" content="" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "",
+            "description": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "MurabitoB"
+            },
+        }
+    </script>
+    
+    <link rel="icon" href="/images/thumbnail.jpg" />
+      
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+      
+<link rel="stylesheet" href="/dist/build.css?v=1690288261467.css">
+ 
+<link rel="stylesheet" href="/dist/custom.css?v=1690288261467.css">
+
+
+    <script>
+      window.isPost = false
+      window.aomori = {
+          
+          gitalk: {
+              enable: true,
+              clientID: "2dbcfa1a9b799109cc68",
+              clientSecret: "889d020c927ce43e47c00fcfe18d20ad13ead0e1",
+              repo: "MurabitoB.github.io",
+              owner: "MurabitoB",
+              admin: ["MurabitoB",],
+              distractionFreeMode: true  // Facebook-like distraction free mode
+          },
+          
+          
+          
+      }
+      window.aomori_logo_typed_animated = true
+      window.aomori_search_algolia = false
+    </script>
+  <meta name="generator" content="Hexo 5.4.2"></head>
+</html>
+
+
+<body>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional" rel="stylesheet">
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="/images/thumbnail.jpg" alt="MurabitoB">
+            </div>
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>MurabitoB&#39;Blog</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">Home</a>
+                
+                <a href="/about">About</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/MurabitoB">
+        <ion-icon name="logo-github"></ion-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">Home</a>
+                    
+                    <a href="/about">About</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="index">
+  
+    
+      <article
+id="post-dotnet-core-scoped-in-singleton"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/post/dotnet-core-scoped-in-singleton.html">.Net Core Dependency Injection Scoped 注入到 Singleton</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h3 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h3><ul>
+<li>.Net Core 3.1</li>
+</ul>
+<hr>
+<h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>踩雷．</p>
+<p>在專案中如果想對 Singleton 的 Service 中直接注入 Scoped 的 Service 的話，會拋出 Exception</p>
+<p>下面範例取自黑暗執行緒</p>
+<pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp">System<span class="token punctuation">.</span>AggregateException<span class="token punctuation">:</span> 'Some services are <span class="token keyword">not</span> able to <span class="token return-type class-name">be</span> constructed <span class="token punctuation">(</span>Error <span class="token keyword">while</span> validating the service descriptor 'ServiceType<span class="token punctuation">:</span> <span class="token class-name">Microsoft<span class="token punctuation">.</span>Extensions<span class="token punctuation">.</span>Hosting<span class="token punctuation">.</span>IHostedService</span> Lifetime<span class="token punctuation">:</span> <span class="token class-name">Singleton</span> ImplementationType<span class="token punctuation">:</span> CRUDExample<span class="token punctuation">.</span>Models<span class="token punctuation">.</span>MemoryUsageMonitor'<span class="token punctuation">:</span> Cannot consume scoped service 'CRUDExample<span class="token punctuation">.</span>Models<span class="token punctuation">.</span>JournalDbContext' <span class="token keyword">from</span> singleton 'Microsoft<span class="token punctuation">.</span>Extensions<span class="token punctuation">.</span>Hosting<span class="token punctuation">.</span>IHostedService'<span class="token punctuation">.</span><span class="token punctuation">)</span>'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>原因是因為是在 Scoped 的生命週期結束後（一次 Request）， Singleton 依然會存在，這並不符合設計的規範．</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-06-16T16:00:00.000Z" itemprop="datePublished">2021-06-17</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Net-Core/" rel="tag">.Net Core</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dependency-Injection/" rel="tag">Dependency Injection</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-Entityframework-Identity"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/post/Entityframework-Identity.html">Entity Framework Identity 插入資料時自動獲得id</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="EntityFramework-Identity-插入資料時自動獲得-id"><a href="#EntityFramework-Identity-插入資料時自動獲得-id" class="headerlink" title="EntityFramework Identity 插入資料時自動獲得 id"></a>EntityFramework Identity 插入資料時自動獲得 id</h2><h3 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h3><ul>
+<li>Visual Studio 2019</li>
+<li>.Net Framework : 4.7.2</li>
+<li>Entity Framework : 6.4.4</li>
+<li>MySql.Data.EntityFramework: 8.0.18</li>
+<li>DB : MariadDB</li>
+</ul>
+<hr>
+<h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>在專案上有需要 MariadDB 的 Table 做資料維護，而 Database 是甲方爸爸開的，所以是必須以 Database First 的模式開發。</p>
+<p>甲方爸爸的欄位皆以 int 做主鍵 id 並以 auto increment 做欄位的自動增值。</p>
+<p>資料維護需要以 Ajax 的方式在新增之後馬上顯示在前端的頁面中，<br>被新增的資料有可能在同頁面中馬上被刪除，因此需要新增資料後要馬上取得該欄位的 id 並回傳給前端。</p>
+<p>此外在插入資料的時候，並沒有直接指定值，而是由資料庫自動產生對應的 id，這就造成了無法知道生成的資料的 id。</p>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-11-23T16:00:00.000Z" itemprop="datePublished">2020-11-24</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Net-Framewrok/" rel="tag">.Net Framewrok</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+
+  
+    <nav class="pagination">
+        <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+  
+</div>
+
+                </section>
+            </section>
+
+            
+            <aside class="sidebar ">
+                
+
+
+<div class="widget" id="widget">
+    
+      
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99/">年度目標</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AA%8D%E8%AD%89/">認證</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Core/" rel="tag">.Net Core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framewrok/" rel="tag">.Net Framewrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/" rel="tag">Angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure-Function/" rel="tag">Azure Function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dependency-Injection/" rel="tag">Dependency Injection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Side-Project/" rel="tag">Side Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag">學習</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7/" rel="tag">開發工具</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/post/ckad.html">2024 CKAD 心得</a>
+          </li>
+        
+          <li>
+            <a href="/post/2023-07-06-vt-gacha.html">Squarelive 轉蛋遊戲製作心得</a>
+          </li>
+        
+          <li>
+            <a href="/post/angular-httpinterceptor.html">Angular 初探 HttpInterceptor</a>
+          </li>
+        
+          <li>
+            <a href="/post/angular-custom-pipe.html">Angular 自定義 Pipe</a>
+          </li>
+        
+          <li>
+            <a href="/post/angular-reactive-form.html">Angular Reactive Form</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            MurabitoB&#39;Blog &copy; 2024<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+
+
+
+<script src="/dist/build.js?1690288261467.js"></script>
+
+
+<script src="/dist/custom.js?1690288261467.js"></script>
+
+
+
+
+
+<!-- Google Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SXXLX5MR04"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SXXLX5MR04');
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="google-site-verification" content="cqX0KLojFnp_XLPXVqGxw_qUBybbxjMzqRSEKTh1NaI" />
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta
+      name="google-site-verification"
+      content="cqX0KLojFnp_XLPXVqGxw_qUBybbxjMzqRSEKTh1NaI"
+    />
     <!-- If containe conver than set og:image -->
-    
-    
+     
     <title>Angular 初探 HttpInterceptor | MurabitoB&#39;Blog</title>
 
-    <meta name="description" content="&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;雖然內建的 HttpClient 本身就可以針對 Http 請求進行設定 header, queryString, body 等參數上的設定。&lt;/p&gt;
+    <meta
+      name="description"
+      content="&lt;h2 id=&#34;前言&#34;&gt;&lt;a href=&#34;#前言&#34; class=&#34;headerlink&#34; title=&#34;前言&#34;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;雖然內建的 HttpClient 本身就可以針對 Http 請求進行設定 header, queryString, body 等參數上的設定。&lt;/p&gt;
 &lt;p&gt;但是，如果今天的情境是請求要呼叫的 API 需要帶上一些 token 放在 header 或者其他地方的話，在每隻都要主動填入的話會造成一直在寫重複的 Code。&lt;/p&gt;
 &lt;p&gt;如果今天的情境是在每次呼叫特定的 API 的話都要都要帶上特定的參數的話，這時候就很適合用 &lt;code&gt;HttpInterceptor&lt;/code&gt; 來進行處理。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;HttpInterceptor&lt;/code&gt; 可以針對每次每次的 &lt;code&gt;Request&lt;/code&gt; &lt;code&gt;Response&lt;/code&gt; 進行加工，使處理的邏輯能夠集中在一個地方，概念上有點像後端 framework 的 &lt;code&gt;Middleware&lt;/code&gt; 。&lt;/p&gt;">
-    <meta name="keywords" content="">
+&lt;p&gt;&lt;code&gt;HttpInterceptor&lt;/code&gt; 可以針對每次每次的 &lt;code&gt;Request&lt;/code&gt; &lt;code&gt;Response&lt;/code&gt; 進行加工，使處理的邏輯能夠集中在一個地方，概念上有點像後端 framework 的 &lt;code&gt;Middleware&lt;/code&gt; 。&lt;/p&gt;"
+    />
+    <meta name="keywords" content="" />
 
     
 
@@ -51,7 +58,7 @@
             "@type": "Organization",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://murabitob.github.ioundefined"
+                "url": "https://murabitob.github.io/images/thumbnail.jpg"
             },
             "name": "MurabitoB"
             },
@@ -66,63 +73,49 @@
     </script>
 
 
-
-
     
-
-    
-
-    
-
-    
-
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
-    
-
-    
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    
-
-    
-
-    
-<link rel="stylesheet" href="/dist/build.css?v=1654266144177.css">
-
-
-    
-<link rel="stylesheet" href="/dist/custom.css?v=1654266144177.css">
+    <link rel="icon" href="/images/thumbnail.jpg" />
+      
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+      
+<link rel="stylesheet" href="/dist/build.css?v=1690288261467.css">
+ 
+<link rel="stylesheet" href="/dist/custom.css?v=1690288261467.css">
 
 
     <script>
-        window.isPost = true
-        window.aomori = {
-            
-            gitalk: {
-                enable: true,
-                clientID: "2dbcfa1a9b799109cc68",
-                clientSecret: "889d020c927ce43e47c00fcfe18d20ad13ead0e1",
-                repo: "MurabitoB.github.io",
-                owner: "MurabitoB",
-                admin: ["MurabitoB",],
-                distractionFreeMode: true  // Facebook-like distraction free mode
-            },
-            
-            
-            
-        }
-        window.aomori_logo_typed_animated = true
-        window.aomori_search_algolia = false
-
+      window.isPost = true
+      window.aomori = {
+          
+          gitalk: {
+              enable: true,
+              clientID: "2dbcfa1a9b799109cc68",
+              clientSecret: "889d020c927ce43e47c00fcfe18d20ad13ead0e1",
+              repo: "MurabitoB.github.io",
+              owner: "MurabitoB",
+              admin: ["MurabitoB",],
+              distractionFreeMode: true  // Facebook-like distraction free mode
+          },
+          
+          
+          
+      }
+      window.aomori_logo_typed_animated = true
+      window.aomori_search_algolia = false
     </script>
+  <meta name="generator" content="Hexo 5.4.2"></head>
+</html>
 
-<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
-
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional" rel="stylesheet">
     <div class="container">
     <header class="header">
         <div class="header-type">
+            
+            <div class="header-type-avatar avatar avatar-sm">
+                <img src="/images/thumbnail.jpg" alt="MurabitoB">
+            </div>
             
             <div class="header-type-inner">
                 
@@ -145,10 +138,6 @@
             </div>
             <div class="header-menu-social">
                 
-    <a class="social" target="_blank" href="https://www.linkedin.com/in/murabitob/">
-        <ion-icon name="logo-linkedin"></ion-icon>
-    </a>
-
     <a class="social" target="_blank" href="https://github.com/MurabitoB">
         <ion-icon name="logo-github"></ion-icon>
     </a>
@@ -188,7 +177,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-cla9209wd0000gnaq8q0f3w47" class="article article-type-post" itemscope
+    <article id="post-cljxylk8g0003m2as4vr76sly" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -229,6 +218,10 @@
             </div>
             
 
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
             
 
         </div>
@@ -340,9 +333,18 @@
     
 <nav class="article-nav">
   
+    <a href="/post/2023-07-06-vt-gacha.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          Squarelive 轉蛋遊戲製作心得
+        
+      </div>
+    </a>
+  
   
     <a href="/post/angular-custom-pipe.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">前の記事</div>
+      <div class="article-nav-caption">上一篇</div>
       <div class="article-nav-title">Angular 自定義 Pipe</div>
     </a>
   
@@ -350,7 +352,7 @@
 
 
     <section class="share">
-        <div class="share-title">シェア</div>
+        <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
             href="https://twitter.com/share?text=Angular 初探 HttpInterceptor - MurabitoB'Blog&url=https%3A%2F%2Fmurabitob.github.io%2Fpost%2Fangular-httpinterceptor.html">
             <ion-icon name="logo-twitter"></ion-icon>
@@ -386,6 +388,8 @@
 
 
 
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 </div>
                 </section>
             </section>
@@ -409,7 +413,7 @@
   <div class="widget-wrap widget-cate">
     <div class="widget-title"><span>Categories</span></div>
     <div class="widget-inner">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99/">年度目標</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99/">年度目標</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BC%8F%E9%96%8B%E7%99%BC/">程式開發</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AA%8D%E8%AD%89/">認證</a></li></ul>
     </div>
   </div>
 
@@ -419,7 +423,7 @@
   <div class="widget-wrap widget-tags">
     <div class="widget-title"><span>Tags</span></div>
     <div class="widget-inner">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Core/" rel="tag">.Net Core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framewrok/" rel="tag">.Net Framewrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/" rel="tag">Angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure-Function/" rel="tag">Azure Function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dependency-Injection/" rel="tag">Dependency Injection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Side-Project/" rel="tag">Side Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag">學習</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7/" rel="tag">開發工具</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Core/" rel="tag">.Net Core</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net-Framewrok/" rel="tag">.Net Framewrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular/" rel="tag">Angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure-Function/" rel="tag">Azure Function</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dependency-Injection/" rel="tag">Dependency Injection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Side-Project/" rel="tag">Side Project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%B8%E7%BF%92/" rel="tag">學習</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7/" rel="tag">開發工具</a></li></ul>
     </div>
   </div>
 
@@ -430,6 +434,14 @@
     <div class="widget-title"><span>Recent Posts</span></div>
     <div class="widget-inner">
       <ul>
+        
+          <li>
+            <a href="/post/ckad.html">2024 CKAD 心得</a>
+          </li>
+        
+          <li>
+            <a href="/post/2023-07-06-vt-gacha.html">Squarelive 轉蛋遊戲製作心得</a>
+          </li>
         
           <li>
             <a href="/post/angular-httpinterceptor.html">Angular 初探 HttpInterceptor</a>
@@ -443,14 +455,6 @@
             <a href="/post/angular-reactive-form.html">Angular Reactive Form</a>
           </li>
         
-          <li>
-            <a href="/post/angular-template-form01.html">Angular Template Form</a>
-          </li>
-        
-          <li>
-            <a href="/post/2022%20%E5%B9%B4%E5%BA%A6%E7%9B%AE%E6%A8%99%20-%20%E7%B8%BD%E7%B5%90.html">2022 年度目標 - 總結</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -460,7 +464,7 @@
   <div class="widget-wrap widget-archive">
     <div class="widget-title"><span>Archive</span></div>
     <div class="widget-inner">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
     </div>
   </div>
 
@@ -483,7 +487,7 @@
     <!-- 开源不易，请勿删除 -->
     <div class="footer-wrap">
         <div class="footer-inner"> 
-            MurabitoB&#39;Blog &copy; 2022<br>
+            MurabitoB&#39;Blog &copy; 2024<br>
             Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
         </div>
     </div>
@@ -499,10 +503,10 @@
 
 
 
-<script src="/dist/build.js?1654266144177.js"></script>
+<script src="/dist/build.js?1690288261467.js"></script>
 
 
-<script src="/dist/custom.js?1654266144177.js"></script>
+<script src="/dist/custom.js?1690288261467.js"></script>
 
 
 
