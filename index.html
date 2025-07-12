@@ -159,6 +159,17 @@ class="article article-type-post"
 
 <div class="article-inner">
     
+    <div class="article-feature">
+        <a href="/post/artale-market.html">
+            <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E"
+                data-src="https://murabitob.github.io/post/artale-market/cover.png"
+                alt="item.title"
+                class="lazy"
+            />
+        </a>
+    </div>
+    
 
     <div class="article-body">
     <header class="article-title">
@@ -166,121 +177,7 @@ class="article article-type-post"
     </header>
     <div class="article-entry post-inner-html">
         
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>大約在今年的五月初，我開始入坑了楓之谷世界上面的楓之谷懷舊服 - Artale，這遊戲上面有個內建的交易系統，可以讓玩家刊登物品來進行交易，但是這個系統在 5/15 的時候，因為效能問題而炸裂，官方決定暫停這個系統的運作，並宣稱會進行內部重構，時至今日已經過了兩個月，仍然還沒修復完成。</p>
-<p><a target="_blank" rel="noopener" href="https://forum.gamer.com.tw/C.php?bsn=79354&snA=4623">玩家整理的事件懶人包</a></p>
-<p>在這樣的情況下，我跟有在玩遊戲的朋友們決定自己架設一個交易媒合系統，讓玩家能夠在沒有官方拍賣的情況下順利交易。</p>
-<p>從開發到上線，約花了五天的下班時間，全程透過 Github Copilot Agent Mode vibe coding 進行開發，成功在五天內上線 MVP。</p>
-<p><em>截圖版本非 MVP 版本</em><br><img src="./artale-market/artale-market.png"></p>
-<h2 id="什麼是交易媒合系統？"><a href="#什麼是交易媒合系統？" class="headerlink" title="什麼是交易媒合系統？"></a>什麼是交易媒合系統？</h2><p>交易媒合系統是一個讓玩家可以刊登物品，並且讓其他玩家可以搜尋到這些物品的系統。這個系統不會直接處理交易，而是提供一個平台讓玩家可以互相聯繫，進行交易。</p>
-<p>這種網站形式也不是我們發明的，在其他遊戲也有類似的系統，例如：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://mapleland.gg/">mapleland.gg</a></li>
-<li><a target="_blank" rel="noopener" href="https://warframe.market/">warframe.market</a></li>
-</ul>
-<p><img src="./artale-market/warframe-market.png"></p>
-<h2 id="初始成員"><a href="#初始成員" class="headerlink" title="初始成員"></a>初始成員</h2><table>
-<thead>
-<tr>
-<th>名稱</th>
-<th>角色</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>我</td>
-<td>工程師</td>
-</tr>
-<tr>
-<td>朋友 A</td>
-<td>客服 / 行銷 / PM</td>
-</tr>
-<tr>
-<td>朋友 B</td>
-<td>客服 / 金主爸爸(?)</td>
-</tr>
-</tbody></table>
-<h2 id="技術選型"><a href="#技術選型" class="headerlink" title="技術選型"></a>技術選型</h2><p>因為只有我一位工程師，所以這個專案對我來說是 Side Project 的性質，一方面想挑戰一下用 vibe coding 去摸索一個我完全不熟悉的技術，另一方面因為有 SEO 的需求，所以選了完全沒摸過的 React + Next.js 作為主要技術棧，走 Serverless 部署，並且使用了以下技術：</p>
-<table>
-<thead>
-<tr>
-<th>技術類別</th>
-<th>技術選擇</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>前 + 後端</strong></td>
-<td>React + Next.js</td>
-</tr>
-<tr>
-<td><strong>UI 框架</strong></td>
-<td>Tailwind CSS + DaisyUI</td>
-</tr>
-<tr>
-<td><strong>狀態管理</strong></td>
-<td>zustand</td>
-</tr>
-<tr>
-<td><strong>表單驗證</strong></td>
-<td>zod + react-hook-form</td>
-</tr>
-<tr>
-<td><strong>資料擷取</strong></td>
-<td>swr + axios</td>
-</tr>
-<tr>
-<td><strong>認證</strong></td>
-<td>NextAuth.js + Discord OAuth</td>
-</tr>
-</tbody></table>
-<h2 id="vibe-coding-踩坑紀錄"><a href="#vibe-coding-踩坑紀錄" class="headerlink" title="vibe coding 踩坑紀錄"></a>vibe coding 踩坑紀錄</h2><p>最一開始，我沒有給他任何 Reference，就直接開始開發，這樣的 vibe coding 方式讓我在開發過程中遇到了一些問題：</p>
-<ol>
-<li><strong>AI 在你沒給參照的時候，他不會去考慮用套件解決問題</strong>：<ul>
-<li>寫表單功能的時候，AI 只會給我一個基本的表單結構，並不會主動去優化代碼，例如使用 <code>react-hook-form</code> ，也不會主動去使用 <code>zod</code> 進行表單驗證</li>
-<li>寫 API 請求的時候，AI 只會給我一個基本的請求邏輯，並不會主動去優化代碼，例如使用 <code>axios</code> 的 <code>swr</code> 來進行資料請求／快取</li>
-</ul>
-</li>
-<li><strong>最好認真 Review AI 所寫的後端代碼</strong>：<ul>
-<li>AI 設計 DB Schema 的時候，不一定會考量到正確的 index 設定，這會導致資料庫查詢效能不佳</li>
-<li>如果你的資料有配置外鍵，並且你在商業邏輯上允許 <code>Cascade Delete</code>，最好在需求上寫清楚</li>
-<li>明確規範變數的 <code>naming convention</code>，例如 <code>snake_case</code> 或 <code>camelCase</code>，這樣 AI 才能夠一致地使用，在這個專案上，前後端都是 React + Next.js 但是 AI 在生成代碼的時候，還是給了後端使用 <code>snake_case</code> 以及前端使用 <code>camelCase</code> 的變數命名方式，這讓我在處理資料時需要額外處理轉換</li>
-<li>明確定義時間格式，這樣 AI 才能夠一致地使用，在這個專案上，例如直接在文檔標注使用 <code>ISO 8601</code> 時間格式，這樣 AI 才能夠一致地使用</li>
-</ul>
-</li>
-</ol>
-<p>因為前面踩了一堆坑，所以後來研究發現 github copilot 可以指定 <a target="_blank" rel="noopener" href="https://docs.github.com/en/copilot/how-tos/custom-instructions/adding-repository-custom-instructions-for-github-copilot">copilot-instructions</a> 這個文檔，這樣每次 AI 生成代碼的時候，都會參考這個文檔，可以避免前面提到的問題。</p>
-<h2 id="交易媒合系統是如何運作的？"><a href="#交易媒合系統是如何運作的？" class="headerlink" title="交易媒合系統是如何運作的？"></a>交易媒合系統是如何運作的？</h2><p>因為剛好有 Youtube 介紹我們的系統，所以我就直接貼連結</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MtJcDHSH184?start=153" title="【楓之谷世界 Artale】沒有拍賣的替代方案！手把手教您如何找到玩家買賣！｜不確定裝備價格？這個網頁帶您快速查價！｜拍賣補償＆官方公告＆市價查詢＆裝備素質＆新手教學｜基德薯叔" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<p>簡單來說：</p>
-<ol>
-<li>玩家可以在系統上刊登物品，並且設定價格</li>
-<li>其他玩家可以在系統上搜尋物品，並且聯繫刊登者進行交易</li>
-<li>玩家看到有興趣的道具，可以直接點擊聯繫按鈕<ul>
-<li>這個按鈕會直接開啟 Discord 的私訊對話，並且透過定型文帶入預設的訊息內容，讓玩家可以快速聯繫刊登者</li>
-</ul>
-</li>
-<li>在 Discord 私訊對話中，玩家可以進行交易協商，並且約定交易時間</li>
-<li>當交易完成後，玩家可以在系統上標記交易完成，<ul>
-<li>這樣其他玩家就可以看到這個物品已經被交易完成，並且將交易結果顯示在完成的交易列表中</li>
-<li>每日的排程會自動統計交易完成量最多的 100 種物品，並且將這些物品的交易次數顯示在首頁的今日物價指數列表</li>
-</ul>
-</li>
-</ol>
-<p><em>今日物價指數</em><br><img src="./artale-market/price-trend.png"></p>
-<h2 id="自動化-與-AI"><a href="#自動化-與-AI" class="headerlink" title="自動化 與 AI"></a>自動化 與 AI</h2><p><em>Artale Market 大量依賴 Github Action 進行每日的自動化排程作業</em><br><img src="./artale-market/artale-market-action.png"></p>
-<p><em>即便只有一個人開發，也是發 PR 請 Github Copilot 協助 Review</em><br><img src="./artale-market/artale-market-pr.png"></p>
-<h2 id="一些上線前後的有趣事件"><a href="#一些上線前後的有趣事件" class="headerlink" title="一些上線前後的有趣事件"></a>一些上線前後的有趣事件</h2><h3 id="收到了一些信件來問可不可以協作"><a href="#收到了一些信件來問可不可以協作" class="headerlink" title="收到了一些信件來問可不可以協作"></a>收到了一些信件來問可不可以協作</h3><p>在上線 MVP 的六小時內內就收到了信件來問可不可以協作，裡面還包含個人的 Github / Linkedin，而且看履歷剛好跟我熟人在同一間公司，沒有太多猶豫就收編人家作為第二位工程師，所以我們現在其實算四人團隊</p>
-<p>雖然後續陸陸續續也有收到了一些信件詢問可不可以協作，但是信件中都沒有附上個人的 Github / 履歷 / 熟悉的技術棧任一項，所以後續也沒有增加協作者了</p>
-<h3 id="還沒上線就有新聞稿"><a href="#還沒上線就有新聞稿" class="headerlink" title="還沒上線就有新聞稿"></a>還沒上線就有新聞稿</h3><p>因為我們有行銷的關係，有在社群平台及巴哈上面預熱，結果在我開發的第三天，就有野生的媒體幫我們做了新聞稿<br><a target="_blank" rel="noopener" href="https://tw.news.yahoo.com/%E3%80%8A%E6%A5%93%E4%B9%8B%E8%B0%B7artale%E3%80%8B%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8B%8D%E8%B3%A3%E5%B9%B3%E5%8F%B0%E5%8D%B3%E5%B0%87%E6%8E%A8%E5%87%BA%EF%BC%81%E5%8F%B0%E7%81%A3%E7%86%B1%E5%BF%83%E7%8E%A9%E5%AE%B6%E6%9E%B6%E8%A8%AD%EF%BC%8C%E9%A0%90%E8%A8%88%E6%8F%90%E4%BE%9B%E6%A5%93%E5%B9%A3%E5%92%8C%E9%9B%AA%E8%8A%B1%E4%BA%A4%E6%98%93-085738586.html">Yahoo 遊戲新聞</a></p>
-<p><img src="./artale-market/artale-market-news.png"></p>
-<h3 id="網站被爬蟲騷擾"><a href="#網站被爬蟲騷擾" class="headerlink" title="網站被爬蟲騷擾"></a>網站被爬蟲騷擾</h3><p>有人直接 mirror 我們網站的內容到中國那邊，而且只 mirror 上架資料，並不會同步下架狀態，導致我們的使用者被騷擾，在我們發現之後，調整了防火牆規則把爬蟲斷頭，還指控有鍵政 ID 影響兩岸關係，不再提供資訊…</p>
-<p><img src="./artale-market/artale-market-cn.png"></p>
-<p>因為中國 domain 申請都需要備案，所以我們根據聯絡資訊去寄了抗議信，順便把所有中國的 IP 都封鎖了…</p>
-<h2 id="目前的狀態"><a href="#目前的狀態" class="headerlink" title="目前的狀態"></a>目前的狀態</h2><p>由於每天都有大量的使用者在訪問這個網站，為了不讓自己虧錢，所以我們有放 google adsense 的廣告<br><img src="./artale-market/page-view.png"></p>
-<p>目前有達成損益平衡，而且多出來的收益足夠支撐我們做一些花錢但效益可能沒那麼高的功能<br>例如：<br><em>通知系統</em><br>這功能直接把我們 db 成本翻倍，還上了分布式快取來分擔 db loading<br><img src="./artale-market/notification.png"></p>
-<p>花錢請工讀生幫忙整理裝備資訊，為後續裝備搜尋做鋪路:<br><img src="./artale-market/artale-market-items.png"></p>
-<h2 id="捐錢"><a href="#捐錢" class="headerlink" title="捐錢"></a>捐錢</h2><p>我們有把多的盈餘扣除成本後，捐獻部分給需要的公益團體，希望玩家社群除了被貼上不務正業的標籤外，還能夠有更多的正面形象</p>
-<p><img src="./artale-market/donation-1.jpg"><br><img src="./artale-market/donation-2.png"></p>
-
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>大約在今年的五月初入坑了楓之谷世界上面的楓之谷懷舊服 - Artale，這遊戲上面有個內建的交易系統，可以讓玩家刊登物品來進行交易，但是這個系統在 5/15 的時候，因為效能問題而炸裂，官方決定暫停這個系統的運作，並宣稱會進行內部重構，時至今日已經過了兩個月，仍然還沒修復完成。</p>
         
     </div>
     </div>
